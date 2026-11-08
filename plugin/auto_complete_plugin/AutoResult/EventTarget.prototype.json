@@ -1,0 +1,83 @@
+[
+  {
+    "function_": {
+      "addEventListener": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "addEventListener",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "dispatchEvent": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "dispatchEvent",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeEventListener": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeEventListener",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "when": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "when",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "EventTarget",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "EventTarget"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

@@ -1,0 +1,625 @@
+[
+  {
+    "accessor_": {
+      "nodeType": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get nodeType",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "nodeName": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get nodeName",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "baseURI": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get baseURI",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "isConnected": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get isConnected",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ownerDocument": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ownerDocument",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "parentNode": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get parentNode",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "parentElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get parentElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "childNodes": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get childNodes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "firstChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get firstChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "lastChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get lastChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "previousSibling": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get previousSibling",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "nextSibling": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get nextSibling",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "nodeValue": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get nodeValue",
+          "length": 0
+        },
+        "set": {
+          "name": "set nodeValue",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "textContent": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get textContent",
+          "length": 0
+        },
+        "set": {
+          "name": "set textContent",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "ELEMENT_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 1
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "ATTRIBUTE_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 2
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "TEXT_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 3
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "CDATA_SECTION_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 4
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "ENTITY_REFERENCE_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 5
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "ENTITY_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 6
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "PROCESSING_INSTRUCTION_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 7
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "COMMENT_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 8
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 9
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_TYPE_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 10
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_FRAGMENT_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 11
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "NOTATION_NODE": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 12
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_DISCONNECTED": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 1
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_PRECEDING": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 2
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_FOLLOWING": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 4
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_CONTAINS": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 8
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_CONTAINED_BY": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 16
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": 32
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "appendChild": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "appendChild",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "cloneNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "cloneNode",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "compareDocumentPosition": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "compareDocumentPosition",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "contains": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "contains",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getRootNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getRootNode",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasChildNodes": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasChildNodes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "insertBefore": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "insertBefore",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "isDefaultNamespace": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "isDefaultNamespace",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "isEqualNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "isEqualNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "isSameNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "isSameNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "lookupNamespaceURI": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "lookupNamespaceURI",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "lookupPrefix": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "lookupPrefix",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "normalize": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "normalize",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeChild": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeChild",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "replaceChild": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "replaceChild",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Node",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Node"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

@@ -1,0 +1,2368 @@
+[
+  {
+    "accessor_": {
+      "namespaceURI": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get namespaceURI",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "prefix": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get prefix",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "localName": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get localName",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "tagName": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get tagName",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "id": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get id",
+          "length": 0
+        },
+        "set": {
+          "name": "set id",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "className": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get className",
+          "length": 0
+        },
+        "set": {
+          "name": "set className",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "classList": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get classList",
+          "length": 0
+        },
+        "set": {
+          "name": "set classList",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "slot": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get slot",
+          "length": 0
+        },
+        "set": {
+          "name": "set slot",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "attributes": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get attributes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "shadowRoot": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get shadowRoot",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "part": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get part",
+          "length": 0
+        },
+        "set": {
+          "name": "set part",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "assignedSlot": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get assignedSlot",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "innerHTML": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get innerHTML",
+          "length": 0
+        },
+        "set": {
+          "name": "set innerHTML",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "outerHTML": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get outerHTML",
+          "length": 0
+        },
+        "set": {
+          "name": "set outerHTML",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scrollTop": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scrollTop",
+          "length": 0
+        },
+        "set": {
+          "name": "set scrollTop",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scrollLeft": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scrollLeft",
+          "length": 0
+        },
+        "set": {
+          "name": "set scrollLeft",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scrollWidth": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scrollWidth",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scrollHeight": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scrollHeight",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "clientTop": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get clientTop",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "clientLeft": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get clientLeft",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "clientWidth": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get clientWidth",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "clientHeight": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get clientHeight",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforecopy": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforecopy",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforecopy",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforecut": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforecut",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforecut",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforepaste": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforepaste",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforepaste",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onsearch": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onsearch",
+          "length": 0
+        },
+        "set": {
+          "name": "set onsearch",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "elementTiming": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get elementTiming",
+          "length": 0
+        },
+        "set": {
+          "name": "set elementTiming",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "customElementRegistry": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get customElementRegistry",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfullscreenchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfullscreenchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfullscreenchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfullscreenerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfullscreenerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfullscreenerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitfullscreenchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitfullscreenchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitfullscreenchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitfullscreenerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitfullscreenerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitfullscreenerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "activeViewTransition": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get activeViewTransition",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "role": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get role",
+          "length": 0
+        },
+        "set": {
+          "name": "set role",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaAtomic": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaAtomic",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaAtomic",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaAutoComplete": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaAutoComplete",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaAutoComplete",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaBusy": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaBusy",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaBusy",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaBrailleLabel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaBrailleLabel",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaBrailleLabel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaBrailleRoleDescription": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaBrailleRoleDescription",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaBrailleRoleDescription",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaChecked": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaChecked",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaChecked",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaColCount": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaColCount",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaColCount",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaColIndex": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaColIndex",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaColIndex",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaColSpan": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaColSpan",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaColSpan",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaCurrent": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaCurrent",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaCurrent",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaDescription": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaDescription",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaDescription",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaDisabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaDisabled",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaDisabled",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaExpanded": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaExpanded",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaExpanded",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaHasPopup": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaHasPopup",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaHasPopup",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaHidden": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaHidden",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaHidden",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaInvalid": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaInvalid",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaInvalid",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaKeyShortcuts": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaKeyShortcuts",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaKeyShortcuts",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaLabel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaLabel",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaLabel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaLevel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaLevel",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaLevel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaLive": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaLive",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaLive",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaModal": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaModal",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaModal",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaMultiLine": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaMultiLine",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaMultiLine",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaMultiSelectable": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaMultiSelectable",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaMultiSelectable",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaOrientation": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaOrientation",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaOrientation",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaPlaceholder": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaPlaceholder",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaPlaceholder",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaPosInSet": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaPosInSet",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaPosInSet",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaPressed": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaPressed",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaPressed",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaReadOnly": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaReadOnly",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaReadOnly",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRelevant": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRelevant",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRelevant",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRequired": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRequired",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRequired",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRoleDescription": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRoleDescription",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRoleDescription",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRowCount": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRowCount",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRowCount",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRowIndex": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRowIndex",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRowIndex",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRowSpan": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRowSpan",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRowSpan",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaSelected": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaSelected",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaSelected",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaSetSize": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaSetSize",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaSetSize",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaSort": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaSort",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaSort",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaValueMax": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaValueMax",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaValueMax",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaValueMin": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaValueMin",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaValueMin",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaValueNow": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaValueNow",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaValueNow",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaValueText": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaValueText",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaValueText",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "children": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get children",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "firstElementChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get firstElementChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "lastElementChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get lastElementChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "childElementCount": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get childElementCount",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "previousElementSibling": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get previousElementSibling",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "nextElementSibling": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get nextElementSibling",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "after": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "after",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "animate": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "animate",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "append": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "append",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "attachShadow": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "attachShadow",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "before": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "before",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "checkVisibility": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "checkVisibility",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "closest": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "closest",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "computedStyleMap": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "computedStyleMap",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAnimations": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAnimations",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAttribute",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAttributeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAttributeNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAttributeNames": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAttributeNames",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAttributeNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAttributeNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAttributeNodeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAttributeNodeNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getBoundingClientRect": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getBoundingClientRect",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getClientRects": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getClientRects",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByClassName": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByClassName",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByTagName": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByTagName",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByTagNameNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByTagNameNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getHTML": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getHTML",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasAttribute",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasAttributeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasAttributeNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasAttributes": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasAttributes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasPointerCapture": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasPointerCapture",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "insertAdjacentElement": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "insertAdjacentElement",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "insertAdjacentHTML": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "insertAdjacentHTML",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "insertAdjacentText": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "insertAdjacentText",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "matches": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "matches",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "moveBefore": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "moveBefore",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "prepend": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "prepend",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "querySelector": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "querySelector",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "querySelectorAll": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "querySelectorAll",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "releasePointerCapture": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "releasePointerCapture",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "remove": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "remove",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeAttribute",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeAttributeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeAttributeNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeAttributeNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeAttributeNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "replaceChildren": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "replaceChildren",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "replaceWith": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "replaceWith",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "requestFullscreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "requestFullscreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "requestPointerLock": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "requestPointerLock",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "scroll": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "scroll",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "scrollBy": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "scrollBy",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "scrollIntoView": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "scrollIntoView",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "scrollIntoViewIfNeeded": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "scrollIntoViewIfNeeded",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "scrollTo": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "scrollTo",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setAttribute",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setAttributeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setAttributeNS",
+          "length": 3
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setAttributeNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setAttributeNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setAttributeNodeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setAttributeNodeNS",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setHTMLUnsafe": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setHTMLUnsafe",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setPointerCapture": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setPointerCapture",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "startViewTransition": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "startViewTransition",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "toggleAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "toggleAttribute",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "webkitMatchesSelector": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "webkitMatchesSelector",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "webkitRequestFullScreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "webkitRequestFullScreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "webkitRequestFullscreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "webkitRequestFullscreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "currentCSSZoom": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get currentCSSZoom",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaColIndexText": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaColIndexText",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaColIndexText",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaRowIndexText": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaRowIndexText",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaRowIndexText",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaActionsElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaActionsElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaActionsElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaActiveDescendantElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaActiveDescendantElement",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaActiveDescendantElement",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaControlsElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaControlsElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaControlsElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaDescribedByElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaDescribedByElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaDescribedByElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaDetailsElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaDetailsElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaDetailsElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaErrorMessageElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaErrorMessageElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaErrorMessageElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaFlowToElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaFlowToElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaFlowToElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ariaLabelledByElements": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ariaLabelledByElements",
+          "length": 0
+        },
+        "set": {
+          "name": "set ariaLabelledByElements",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "ariaNotify": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "ariaNotify",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "pseudo": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "pseudo",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setHTML": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setHTML",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Element",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Element"
+      }
+    },
+    "keyType": "symbol"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.unscopables)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": {
+          "type": "object",
+          "tag": "[object Object]",
+          "proto": "null",
+          "entries": {
+            "after": true,
+            "append": true,
+            "before": true,
+            "prepend": true,
+            "remove": true,
+            "replaceChildren": true,
+            "replaceWith": true,
+            "slot": true
+          }
+        }
+      }
+    },
+    "keyType": "symbol"
+  }
+]

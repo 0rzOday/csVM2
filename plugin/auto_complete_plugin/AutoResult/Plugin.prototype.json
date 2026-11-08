@@ -1,0 +1,121 @@
+[
+  {
+    "accessor_": {
+      "name": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get name",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "filename": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get filename",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "description": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get description",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "length": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get length",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "item": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "item",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "namedItem": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "namedItem",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Plugin",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Plugin"
+      }
+    },
+    "keyType": "symbol"
+  },
+  {
+    "function_": {
+      "Symbol(Symbol.iterator)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "values",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "symbol"
+  }
+]

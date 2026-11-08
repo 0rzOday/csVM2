@@ -1,0 +1,41 @@
+[
+  {
+    "function_": {
+      "parseFromString": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "parseFromString",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "DOMParser",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "DOMParser"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

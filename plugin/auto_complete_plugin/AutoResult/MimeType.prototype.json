@@ -1,0 +1,79 @@
+[
+  {
+    "accessor_": {
+      "type": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get type",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "suffixes": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get suffixes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "description": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get description",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "enabledPlugin": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get enabledPlugin",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "MimeType",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "MimeType"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

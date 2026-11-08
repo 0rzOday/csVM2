@@ -1,0 +1,112 @@
+[
+  {
+    "accessor_": {
+      "name": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get name",
+          "length": 0
+        },
+        "set": {
+          "name": "set name",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "httpEquiv": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get httpEquiv",
+          "length": 0
+        },
+        "set": {
+          "name": "set httpEquiv",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "content": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get content",
+          "length": 0
+        },
+        "set": {
+          "name": "set content",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "media": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get media",
+          "length": 0
+        },
+        "set": {
+          "name": "set media",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scheme": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scheme",
+          "length": 0
+        },
+        "set": {
+          "name": "set scheme",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "HTMLMetaElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "HTMLMetaElement"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

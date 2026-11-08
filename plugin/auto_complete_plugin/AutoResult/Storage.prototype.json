@@ -1,0 +1,110 @@
+[
+  {
+    "accessor_": {
+      "length": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get length",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "clear": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "clear",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getItem": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getItem",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "key": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "key",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "removeItem": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "removeItem",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "setItem": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "setItem",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Storage",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Storage"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

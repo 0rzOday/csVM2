@@ -1,0 +1,486 @@
+[
+  {
+    "accessor_": {
+      "vendorSub": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get vendorSub",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "productSub": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get productSub",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "vendor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get vendor",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "maxTouchPoints": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get maxTouchPoints",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scheduling": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scheduling",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "userActivation": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get userActivation",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "geolocation": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get geolocation",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "doNotTrack": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get doNotTrack",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitTemporaryStorage": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitTemporaryStorage",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitPersistentStorage": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitPersistentStorage",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "windowControlsOverlay": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get windowControlsOverlay",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "hardwareConcurrency": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get hardwareConcurrency",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "cookieEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get cookieEnabled",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "appCodeName": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get appCodeName",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "appName": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get appName",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "appVersion": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get appVersion",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "platform": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get platform",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "product": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get product",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "userAgent": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get userAgent",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "language": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get language",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "languages": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get languages",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onLine": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onLine",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webdriver": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webdriver",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "plugins": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get plugins",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "mimeTypes": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get mimeTypes",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "pdfViewerEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get pdfViewerEnabled",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "connection": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get connection",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getGamepads": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getGamepads",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "javaEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "javaEnabled",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "sendBeacon": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "sendBeacon",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "vibrate": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "vibrate",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Navigator",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ink": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ink",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "mediaCapabilities": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get mediaCapabilities",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "permissions": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get permissions",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "mediaSession": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get mediaSession",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Navigator"
+      }
+    },
+    "keyType": "symbol"
+  }
+]

@@ -1,0 +1,3824 @@
+[
+  {
+    "accessor_": {
+      "implementation": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get implementation",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "URL": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get URL",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "documentURI": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get documentURI",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "compatMode": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get compatMode",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "characterSet": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get characterSet",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "charset": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get charset",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "inputEncoding": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get inputEncoding",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "contentType": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get contentType",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "doctype": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get doctype",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "documentElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get documentElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "xmlEncoding": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get xmlEncoding",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "xmlVersion": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get xmlVersion",
+          "length": 0
+        },
+        "set": {
+          "name": "set xmlVersion",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "xmlStandalone": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get xmlStandalone",
+          "length": 0
+        },
+        "set": {
+          "name": "set xmlStandalone",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "domain": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get domain",
+          "length": 0
+        },
+        "set": {
+          "name": "set domain",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "referrer": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get referrer",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "cookie": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get cookie",
+          "length": 0
+        },
+        "set": {
+          "name": "set cookie",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "lastModified": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get lastModified",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "readyState": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get readyState",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "title": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get title",
+          "length": 0
+        },
+        "set": {
+          "name": "set title",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "dir": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get dir",
+          "length": 0
+        },
+        "set": {
+          "name": "set dir",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "body": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get body",
+          "length": 0
+        },
+        "set": {
+          "name": "set body",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "head": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get head",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "images": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get images",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "embeds": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get embeds",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "plugins": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get plugins",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "links": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get links",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "forms": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get forms",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scripts": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scripts",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "currentScript": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get currentScript",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "defaultView": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get defaultView",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "designMode": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get designMode",
+          "length": 0
+        },
+        "set": {
+          "name": "set designMode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onreadystatechange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onreadystatechange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onreadystatechange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "anchors": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get anchors",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "applets": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get applets",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fgColor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fgColor",
+          "length": 0
+        },
+        "set": {
+          "name": "set fgColor",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "linkColor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get linkColor",
+          "length": 0
+        },
+        "set": {
+          "name": "set linkColor",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "vlinkColor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get vlinkColor",
+          "length": 0
+        },
+        "set": {
+          "name": "set vlinkColor",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "alinkColor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get alinkColor",
+          "length": 0
+        },
+        "set": {
+          "name": "set alinkColor",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "bgColor": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get bgColor",
+          "length": 0
+        },
+        "set": {
+          "name": "set bgColor",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "all": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get all",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "scrollingElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get scrollingElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerlockchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerlockchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerlockchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerlockerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerlockerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerlockerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "hidden": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get hidden",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "visibilityState": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get visibilityState",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "wasDiscarded": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get wasDiscarded",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "prerendering": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get prerendering",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "featurePolicy": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get featurePolicy",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitVisibilityState": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitVisibilityState",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitHidden": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitHidden",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforecopy": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforecopy",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforecopy",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforecut": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforecut",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforecut",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforepaste": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforepaste",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforepaste",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfreeze": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfreeze",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfreeze",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onprerenderingchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onprerenderingchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onprerenderingchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onresume": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onresume",
+          "length": 0
+        },
+        "set": {
+          "name": "set onresume",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onsearch": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onsearch",
+          "length": 0
+        },
+        "set": {
+          "name": "set onsearch",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onvisibilitychange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onvisibilitychange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onvisibilitychange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "timeline": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get timeline",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fullscreenEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fullscreenEnabled",
+          "length": 0
+        },
+        "set": {
+          "name": "set fullscreenEnabled",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fullscreen": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fullscreen",
+          "length": 0
+        },
+        "set": {
+          "name": "set fullscreen",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfullscreenchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfullscreenchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfullscreenchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfullscreenerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfullscreenerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfullscreenerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitIsFullScreen": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitIsFullScreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitCurrentFullScreenElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitCurrentFullScreenElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitFullscreenEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitFullscreenEnabled",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "webkitFullscreenElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get webkitFullscreenElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitfullscreenchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitfullscreenchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitfullscreenchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitfullscreenerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitfullscreenerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitfullscreenerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "rootElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get rootElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "activeViewTransition": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get activeViewTransition",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "pictureInPictureEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get pictureInPictureEnabled",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onabort": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onabort",
+          "length": 0
+        },
+        "set": {
+          "name": "set onabort",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforeinput": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforeinput",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforeinput",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforematch": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforematch",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforematch",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforetoggle": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforetoggle",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforetoggle",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onblur": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onblur",
+          "length": 0
+        },
+        "set": {
+          "name": "set onblur",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncancel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncancel",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncancel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncanplay": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncanplay",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncanplay",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncanplaythrough": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncanplaythrough",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncanplaythrough",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onclick": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onclick",
+          "length": 0
+        },
+        "set": {
+          "name": "set onclick",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onclose": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onclose",
+          "length": 0
+        },
+        "set": {
+          "name": "set onclose",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncommand": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncommand",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncommand",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncontentvisibilityautostatechange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncontentvisibilityautostatechange",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncontentvisibilityautostatechange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncontextlost": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncontextlost",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncontextlost",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncontextmenu": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncontextmenu",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncontextmenu",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncontextrestored": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncontextrestored",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncontextrestored",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncuechange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncuechange",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncuechange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondblclick": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondblclick",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondblclick",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondrag": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondrag",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondrag",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondragend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondragend",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondragend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondragenter": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondragenter",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondragenter",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondragleave": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondragleave",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondragleave",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondragover": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondragover",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondragover",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondragstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondragstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondragstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondrop": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondrop",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondrop",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ondurationchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ondurationchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set ondurationchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onemptied": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onemptied",
+          "length": 0
+        },
+        "set": {
+          "name": "set onemptied",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onended": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onended",
+          "length": 0
+        },
+        "set": {
+          "name": "set onended",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onerror": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onerror",
+          "length": 0
+        },
+        "set": {
+          "name": "set onerror",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onfocus": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onfocus",
+          "length": 0
+        },
+        "set": {
+          "name": "set onfocus",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onformdata": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onformdata",
+          "length": 0
+        },
+        "set": {
+          "name": "set onformdata",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oninput": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oninput",
+          "length": 0
+        },
+        "set": {
+          "name": "set oninput",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oninvalid": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oninvalid",
+          "length": 0
+        },
+        "set": {
+          "name": "set oninvalid",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onkeydown": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onkeydown",
+          "length": 0
+        },
+        "set": {
+          "name": "set onkeydown",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onkeypress": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onkeypress",
+          "length": 0
+        },
+        "set": {
+          "name": "set onkeypress",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onkeyup": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onkeyup",
+          "length": 0
+        },
+        "set": {
+          "name": "set onkeyup",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onload": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onload",
+          "length": 0
+        },
+        "set": {
+          "name": "set onload",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onloadeddata": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onloadeddata",
+          "length": 0
+        },
+        "set": {
+          "name": "set onloadeddata",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onloadedmetadata": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onloadedmetadata",
+          "length": 0
+        },
+        "set": {
+          "name": "set onloadedmetadata",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onloadstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onloadstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set onloadstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmousedown": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmousedown",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmousedown",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmouseenter": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmouseenter",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmouseenter",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmouseleave": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmouseleave",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmouseleave",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmousemove": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmousemove",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmousemove",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmouseout": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmouseout",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmouseout",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmouseover": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmouseover",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmouseover",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmouseup": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmouseup",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmouseup",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onmousewheel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onmousewheel",
+          "length": 0
+        },
+        "set": {
+          "name": "set onmousewheel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpause": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpause",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpause",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onplay": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onplay",
+          "length": 0
+        },
+        "set": {
+          "name": "set onplay",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onplaying": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onplaying",
+          "length": 0
+        },
+        "set": {
+          "name": "set onplaying",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onprogress": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onprogress",
+          "length": 0
+        },
+        "set": {
+          "name": "set onprogress",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onratechange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onratechange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onratechange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onreset": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onreset",
+          "length": 0
+        },
+        "set": {
+          "name": "set onreset",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onresize": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onresize",
+          "length": 0
+        },
+        "set": {
+          "name": "set onresize",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onscroll": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onscroll",
+          "length": 0
+        },
+        "set": {
+          "name": "set onscroll",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onscrollend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onscrollend",
+          "length": 0
+        },
+        "set": {
+          "name": "set onscrollend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onsecuritypolicyviolation": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onsecuritypolicyviolation",
+          "length": 0
+        },
+        "set": {
+          "name": "set onsecuritypolicyviolation",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onseeked": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onseeked",
+          "length": 0
+        },
+        "set": {
+          "name": "set onseeked",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onseeking": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onseeking",
+          "length": 0
+        },
+        "set": {
+          "name": "set onseeking",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onselect": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onselect",
+          "length": 0
+        },
+        "set": {
+          "name": "set onselect",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onslotchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onslotchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onslotchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onstalled": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onstalled",
+          "length": 0
+        },
+        "set": {
+          "name": "set onstalled",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onsubmit": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onsubmit",
+          "length": 0
+        },
+        "set": {
+          "name": "set onsubmit",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onsuspend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onsuspend",
+          "length": 0
+        },
+        "set": {
+          "name": "set onsuspend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontimeupdate": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontimeupdate",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontimeupdate",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontoggle": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontoggle",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontoggle",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onvolumechange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onvolumechange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onvolumechange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwaiting": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwaiting",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwaiting",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitanimationend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitanimationend",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitanimationend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitanimationiteration": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitanimationiteration",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitanimationiteration",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkitanimationstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkitanimationstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkitanimationstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwebkittransitionend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwebkittransitionend",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwebkittransitionend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onwheel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onwheel",
+          "length": 0
+        },
+        "set": {
+          "name": "set onwheel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onauxclick": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onauxclick",
+          "length": 0
+        },
+        "set": {
+          "name": "set onauxclick",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ongotpointercapture": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ongotpointercapture",
+          "length": 0
+        },
+        "set": {
+          "name": "set ongotpointercapture",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onlostpointercapture": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onlostpointercapture",
+          "length": 0
+        },
+        "set": {
+          "name": "set onlostpointercapture",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerdown": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerdown",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerdown",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointermove": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointermove",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointermove",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerup": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerup",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerup",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointercancel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointercancel",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointercancel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerover": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerover",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerover",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerout": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerout",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerout",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerenter": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerenter",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerenter",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpointerleave": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpointerleave",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpointerleave",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onselectstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onselectstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set onselectstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onselectionchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onselectionchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onselectionchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onanimationcancel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onanimationcancel",
+          "length": 0
+        },
+        "set": {
+          "name": "set onanimationcancel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onanimationend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onanimationend",
+          "length": 0
+        },
+        "set": {
+          "name": "set onanimationend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onanimationiteration": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onanimationiteration",
+          "length": 0
+        },
+        "set": {
+          "name": "set onanimationiteration",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onanimationstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onanimationstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set onanimationstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontransitionrun": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontransitionrun",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontransitionrun",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontransitionstart": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontransitionstart",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontransitionstart",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontransitionend": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontransitionend",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontransitionend",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ontransitioncancel": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get ontransitioncancel",
+          "length": 0
+        },
+        "set": {
+          "name": "set ontransitioncancel",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onbeforexrselect": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onbeforexrselect",
+          "length": 0
+        },
+        "set": {
+          "name": "set onbeforexrselect",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncopy": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncopy",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncopy",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "oncut": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get oncut",
+          "length": 0
+        },
+        "set": {
+          "name": "set oncut",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onpaste": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onpaste",
+          "length": 0
+        },
+        "set": {
+          "name": "set onpaste",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "children": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get children",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "firstElementChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get firstElementChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "lastElementChild": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get lastElementChild",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "childElementCount": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get childElementCount",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "activeElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get activeElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "styleSheets": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get styleSheets",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "pointerLockElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get pointerLockElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fullscreenElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fullscreenElement",
+          "length": 0
+        },
+        "set": {
+          "name": "set fullscreenElement",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "adoptedStyleSheets": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get adoptedStyleSheets",
+          "length": 0
+        },
+        "set": {
+          "name": "set adoptedStyleSheets",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "pictureInPictureElement": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get pictureInPictureElement",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "customElementRegistry": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get customElementRegistry",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fonts": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fonts",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "adoptNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "adoptNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "append": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "append",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "captureEvents": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "captureEvents",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "caretPositionFromPoint": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "caretPositionFromPoint",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "caretRangeFromPoint": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "caretRangeFromPoint",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "clear": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "clear",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "close": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "close",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createAttribute": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createAttribute",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createAttributeNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createAttributeNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createCDATASection": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createCDATASection",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createComment": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createComment",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createDocumentFragment": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createDocumentFragment",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createElement": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createElement",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createElementNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createElementNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createEvent": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createEvent",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createExpression": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createExpression",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createNSResolver": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createNSResolver",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createNodeIterator": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createNodeIterator",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createProcessingInstruction": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createProcessingInstruction",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createRange": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createRange",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createTextNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createTextNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "createTreeWalker": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "createTreeWalker",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "elementFromPoint": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "elementFromPoint",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "elementsFromPoint": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "elementsFromPoint",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "evaluate": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "evaluate",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "execCommand": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "execCommand",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "exitFullscreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "exitFullscreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "exitPictureInPicture": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "exitPictureInPicture",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "exitPointerLock": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "exitPointerLock",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getAnimations": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getAnimations",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementById": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementById",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByClassName": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByClassName",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByName": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByName",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByTagName": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByTagName",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getElementsByTagNameNS": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getElementsByTagNameNS",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "getSelection": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "getSelection",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasFocus": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasFocus",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasStorageAccess": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasStorageAccess",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "hasUnpartitionedCookieAccess": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "hasUnpartitionedCookieAccess",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "importNode": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "importNode",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "moveBefore": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "moveBefore",
+          "length": 2
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "open": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "open",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "prepend": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "prepend",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "queryCommandEnabled": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "queryCommandEnabled",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "queryCommandIndeterm": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "queryCommandIndeterm",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "queryCommandState": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "queryCommandState",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "queryCommandSupported": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "queryCommandSupported",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "queryCommandValue": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "queryCommandValue",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "querySelector": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "querySelector",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "querySelectorAll": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "querySelectorAll",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "releaseEvents": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "releaseEvents",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "replaceChildren": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "replaceChildren",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "requestStorageAccess": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "requestStorageAccess",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "startViewTransition": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "startViewTransition",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "webkitCancelFullScreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "webkitCancelFullScreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "webkitExitFullscreen": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "webkitExitFullscreen",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "write": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "write",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "writeln": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "writeln",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "constructor": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": true,
+        "value": {
+          "name": "Document",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "fragmentDirective": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get fragmentDirective",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onscrollsnapchange": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onscrollsnapchange",
+          "length": 0
+        },
+        "set": {
+          "name": "set onscrollsnapchange",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "onscrollsnapchanging": {
+        "configurable": true,
+        "enumerable": true,
+        "get": {
+          "name": "get onscrollsnapchanging",
+          "length": 0
+        },
+        "set": {
+          "name": "set onscrollsnapchanging",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "ariaNotify": {
+        "configurable": true,
+        "enumerable": true,
+        "writable": true,
+        "value": {
+          "name": "ariaNotify",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toStringTag)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": "Document"
+      }
+    },
+    "keyType": "symbol"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.unscopables)": {
+        "configurable": true,
+        "enumerable": false,
+        "writable": false,
+        "value": {
+          "type": "object",
+          "tag": "[object Object]",
+          "proto": "null",
+          "entries": {
+            "append": true,
+            "fullscreen": true,
+            "prepend": true,
+            "replaceChildren": true
+          }
+        }
+      }
+    },
+    "keyType": "symbol"
+  }
+]

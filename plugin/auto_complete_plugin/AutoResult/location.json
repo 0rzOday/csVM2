@@ -1,0 +1,247 @@
+[
+  {
+    "function_": {
+      "valueOf": {
+        "configurable": false,
+        "enumerable": false,
+        "writable": false,
+        "value": {
+          "name": "valueOf",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "ancestorOrigins": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get ancestorOrigins",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "href": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get href",
+          "length": 0
+        },
+        "set": {
+          "name": "set href",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "origin": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get origin",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "protocol": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get protocol",
+          "length": 0
+        },
+        "set": {
+          "name": "set protocol",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "host": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get host",
+          "length": 0
+        },
+        "set": {
+          "name": "set host",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "hostname": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get hostname",
+          "length": 0
+        },
+        "set": {
+          "name": "set hostname",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "port": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get port",
+          "length": 0
+        },
+        "set": {
+          "name": "set port",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "pathname": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get pathname",
+          "length": 0
+        },
+        "set": {
+          "name": "set pathname",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "search": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get search",
+          "length": 0
+        },
+        "set": {
+          "name": "set search",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "accessor_": {
+      "hash": {
+        "configurable": false,
+        "enumerable": true,
+        "get": {
+          "name": "get hash",
+          "length": 0
+        },
+        "set": {
+          "name": "set hash",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "assign": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": {
+          "name": "assign",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "reload": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": {
+          "name": "reload",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "replace": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": {
+          "name": "replace",
+          "length": 1
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "function_": {
+      "toString": {
+        "configurable": false,
+        "enumerable": true,
+        "writable": false,
+        "value": {
+          "name": "toString",
+          "length": 0
+        }
+      }
+    },
+    "keyType": "string"
+  },
+  {
+    "constant_": {
+      "Symbol(Symbol.toPrimitive)": {
+        "configurable": false,
+        "enumerable": false,
+        "writable": false,
+        "value": {
+          "type": "undefined"
+        }
+      }
+    },
+    "keyType": "symbol"
+  }
+]
