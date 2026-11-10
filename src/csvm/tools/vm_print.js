@@ -11,11 +11,40 @@ csvm.print.print_infor=function print_infor(type,object,property,value,time,stat
     this.state=state;
 }
 csvm.memory.print=[];
+// 因缓冲上限被丢弃的条数，showlog 时提示
+csvm.memory.printDropped=0;
+// 防止「格式化日志里的值」触发代理 trap 又进来记日志，造成递归
+csvm.print._writing=false;
 csvm.print.log = function(value){
-    
+
     // 如果没有开启打印功能，则直接返回
     if (!csvm.memory.config.print) return;
-    csvm.memory.print.push(value);
+
+    var list=csvm.memory.print;
+    list.push(value);
+
+    // 缓冲上限：一次多丢一点，避免每条日志都执行 splice
+    var maxKeep=csvm.memory.config.maxKeep||0;
+    if (maxKeep>0 && list.length>maxKeep+500){
+        var drop=list.length-maxKeep;
+        list.splice(0,drop);
+        csvm.memory.printDropped+=drop;
+    }
+
+    // 运行时同步输出：不等目标跑完、也不等报错
+    if (!csvm.memory.config.stream || csvm.print._writing) return;
+    // 默认只同步目标阶段的日志，框架加载期的噪音仍然只在最后表格里（可由 streamInit 打开）
+    if (value.phase!=="target" && !csvm.memory.config.streamInit) return;
+
+    csvm.print._writing=true;
+    try{
+        console.log(csvm.print.format_line(value));
+    }catch(e){
+        // 格式化失败不能把目标带崩
+        try{ console.log("[LOG] 格式化失败: "+(e&&e.message)); }catch(_){}
+    }finally{
+        csvm.print._writing=false;
+    }
 };
 // 截断文本，超长用 ... 结尾
 csvm.print.cut=function(text,max){
@@ -62,7 +91,22 @@ csvm.print.short_time=function(value){
     var match=/(\d{1,2}:\d{2}:\d{2}(?:\s*[AP]M)?)/i.exec(String(value));
     return match?match[1]:String(value);
 };
+// 运行时同步输出用的单行格式
+// 例：[3:15:42 PM] target GET [Window] navigator = [Navigator] | 成功
+// 必须带上 object：同一个属性名可能是 document 的，也可能是 window 的
+csvm.print.format_line=function(info){
+    return "["+csvm.print.short_time(info.time)+"] "+
+        info.phase+" "+
+        csvm.print.short_type(info.type)+" "+
+        csvm.print.short_value(info.object,30)+" "+
+        csvm.print.short_value(info.property,60)+
+        " = "+csvm.print.short_value(info.value,60)+
+        " | "+info.state;
+};
 csvm.print.showlog = function(){
+    // 保留原来的「跑完后输出汇总表格」功能；stream 只负责运行中同步打印
+    // 不想看最后的表格时把 config.table 置 false
+    if (csvm.memory.config.table===false) return;
     // console.table 的规则：对象 -> 每个 key 是一行；数组 -> 每个元素是一行。
     // 这里要把「一条日志」组装成一个对象放进数组，字段才会成为列。
     let console_table_array=[];
@@ -84,5 +128,10 @@ csvm.print.showlog = function(){
         });
     }
     console.table(console_table_array);
-    
+
+    // 死循环时日志会超过上限，明确提示被丢了多少，避免误以为日志完整
+    if (csvm.memory.printDropped>0){
+        console.log("[日志] 内存中仅保留最近 "+(csvm.memory.config.maxKeep||0)+
+            " 条，已丢弃 "+csvm.memory.printDropped+" 条（运行中的同步日志不受影响）");
+    }
 };

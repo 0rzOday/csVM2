@@ -8,6 +8,17 @@
     // 函数上不留任何自有 symbol，Reflect.ownKeys / getOwnPropertySymbols 与原生一致
     const fakeText = new WeakMap();
 
+    // vm2 编译时会给每个 catch 注入一句
+    //   xxx=VM2_INTERNAL_STATE_DO_NOT_USE_OR_PROGRAM_WILL_FAIL.handleException(xxx);
+    // 于是 toString() 返回的源码和浏览器里的原始文本不一致。目标如果拿自己的源码
+    // 算校验和（阿里 WAF 的 xXRQBR 就是），哈希对不上就会卡在 while(!![]) 死循环。
+    // 这里在返回前把注入段剥掉，还原成浏览器里看到的源码。
+    const VM2_MARK = "VM2_INTERNAL_STATE_DO_NOT_USE_OR_PROGRAM_WILL_FAIL.handleException(";
+    const VM2_CATCH_INJECT = /([A-Za-z_$][\w$]*)=VM2_INTERNAL_STATE_DO_NOT_USE_OR_PROGRAM_WILL_FAIL\.handleException\(\1\);/g;
+    function stripVm2Injections(text) {
+        return text.indexOf(VM2_MARK) === -1 ? text : text.replace(VM2_CATCH_INJECT, "");
+    }
+
     // 方法简写取出：没有自有 prototype、不能 new，
     // 和原生 Function.prototype.toString 的形状一致
     const myToString = {
@@ -16,7 +27,7 @@
                 const text = fakeText.get(this);
                 if (text !== undefined) return text;
             }
-            return $toString.call(this);
+            return stripVm2Injections($toString.call(this));
         }
     }.toString;
 

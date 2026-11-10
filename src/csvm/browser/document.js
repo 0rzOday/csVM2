@@ -1,13 +1,72 @@
 // document 实例
 // Document 接口构造器定义在 DOM/Document.js（依赖 Node.js，必须先加载）
 document={};
-
-///////////////
-// 属性（cookie / referrer / title 等）统一由自动导出脚本生成到 Document.prototype 上（getter/setter），
-// 这里不再在实例上直接挂 data property，否则会遮蔽原型上的 accessor。
-
-///////////////
 document.__proto__=HTMLDocument.prototype;
+/* #region AUTO:document */
+(function () {
+    // --- 生成代码公共辅助 ---------------------------------------------------
+    const __autoHit = new Set();
 
+    // 加载时抓一份原生 apply。目标之后改 Function.prototype.apply / Reflect.apply，
+    // 也影响不到包装层，免得它看到框架内部的调用
+    const __autoApply = Reflect.apply;
+
+    // 第三个参数是手写实现：传了就用它，不再造空壳、不再打 debugger。
+    // 伪装（safefunction）和代理（proxy）对它照样生效，指纹和日志与生成的一致。
+    function __autoFn(name, length, impl) {
+        let fn;
+        if (typeof impl === "function") {
+            // 方法简写包一层：普通函数表达式自带 prototype / arguments / caller，
+            // 而且能被 new；原生 getter 只有 length / name，也不能构造。
+            // 包一层后形状与原生一致，this 照常透传。
+            fn = { [name](...args) { return __autoApply(impl, this, args); } }[name];
+        } else {
+            fn = { [name]() {
+                if (!__autoHit.has(name)) {
+                    __autoHit.add(name);
+                    debugger;
+                }
+            } }[name];
+        }
+
+        Object.defineProperty(fn, "name", {
+            value: name,
+            writable: false,
+            enumerable: false,
+            configurable: true,
+        });
+
+        Object.defineProperty(fn, "length", {
+            value: length,
+            writable: false,
+            enumerable: false,
+            configurable: true,
+        });
+
+        // 顺序不能反：先包代理再伪装。
+        // 原生 Function.prototype.toString 对 Proxy 只会给 "function () { [native code] }"，
+        // 所以伪装的文本必须登记在代理对象上，否则名字会丢。
+        if (typeof csvm === "undefined") return fn;
+
+        // 代理背后的原始函数也登记伪造源码：
+        // Error.prepareStackTrace 的 CallSite.getFunction() 可能拿到它
+        if (csvm.safefunction) csvm.safefunction(fn, name);
+
+        const wrapped = csvm.proxy ? csvm.proxy(fn, name) : fn;
+        return csvm.safefunction ? csvm.safefunction(wrapped, name) : wrapped;
+    }
+    // location
+    Object.defineProperty(document, "location", {
+        configurable: false,
+        enumerable: true,
+        get: __autoFn("get location", 0 , function(){
+            return csvm.memory.location;
+        }),
+        set: __autoFn("set location", 1 , function(value){
+            csvm.memory.location=value;
+        }),
+    });
+})();
+/* #endregion AUTO:document */
 document=csvm.proxy(document,"document");
 csvm.memory.Dom.set(document, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] });

@@ -1,12 +1,12 @@
 const { VM, VMScript } = require("vm2");
 const fs = require("fs");
+const path = require("path");
+const parse5 = require("parse5");
 
 const csvm = require(`${__dirname}/csvm/csvm.node.js`);
 
 // 补环境代码（tools + browser + DOM）
 const csvm_code = csvm.GetCode();
-// 目标代码
-const target_code = fs.readFileSync(`${__dirname}/code.js`, "utf8");
 
 // ---------------------------------------------------------------------------
 // 框架整段包进 IIFE 执行
@@ -56,6 +56,48 @@ const cleanup_code = ["Buffer", "global", "GLOBAL", "root", "VMError"].map(funct
     return `delete window[${JSON.stringify(name)}];`;
 }).join("\r\n");
 
+// 按文档顺序收集页面内联 <script> 的原始文本。
+// 取的是 parse5 解析后的 text 节点，和浏览器执行时看到的源码一致；
+// 不要对文本做格式化，否则自校验类脚本（如阿里 WAF）会失效。
+function collectPageScripts(htmlPath) {
+    if (!fs.existsSync(htmlPath)) {
+        throw new Error(`页面文件不存在: ${htmlPath}`);
+    }
+
+    const doc = parse5.parse(fs.readFileSync(htmlPath, "utf8"));
+    const scripts = [];
+
+    (function walk(node) {
+        if (node.nodeName === "script") {
+            const attrs = {};
+            for (const a of node.attrs || []) attrs[a.name] = a.value;
+
+            if (attrs.src) {
+                // 外链脚本需要先下载，这里只处理内联脚本
+                console.warn(`跳过外链脚本: ${attrs.src}`);
+            } else {
+                const type = (attrs.type || "").toLowerCase();
+                const isJs = type === "" || type === "text/javascript" ||
+                    type === "application/javascript";
+                if (!isJs) {
+                    console.warn(`跳过非 JS 脚本: type=${attrs.type}`);
+                } else {
+                    const text = (node.childNodes || []).map(function (c) {
+                        return c.value || "";
+                    }).join("");
+                    if (text) scripts.push(text);
+                }
+            }
+        }
+
+        // <template> 的子节点挂在 content 上，不在 childNodes 里
+        if (node.content) walk(node.content);
+        for (const child of node.childNodes || []) walk(child);
+    })(doc);
+
+    return scripts;
+}
+
 const vm = new VM({
     sandbox: { console }
 });
@@ -73,7 +115,14 @@ const api = vm.run(new VMScript(
     "return {\r\n" +
     "    setPhase: function (p) { csvm.memory.phase = p; },\r\n" +
     "    showlog: function () { csvm.print.showlog(); },\r\n" +
-    "    nativeText: function () { return csvm.nativeText.report(); }\r\n" +
+    "    nativeText: function () { return csvm.nativeText.report(); },\r\n" +
+    // 启动模式由框架内存里的 config 决定，宿主侧只读，不直接碰沙箱内部
+    "    getConfig: function () {\r\n" +
+    "        return {\r\n" +
+    "            runScripts: !!csvm.memory.config.runScripts,\r\n" +
+    "            scriptHtmlPath: csvm.memory.config.scriptHtmlPath\r\n" +
+    "        };\r\n" +
+    "    }\r\n" +
     "};\r\n" +
     "})();",
     "框架"
@@ -83,11 +132,34 @@ const api = vm.run(new VMScript(
 api.setPhase("target");
 debugger;
 
-// 第二段：目标。在全局作用域执行，顶层 var 照旧成为 window 属性，间接 eval 才看得到。
+// 第二段：启动模式由框架内存里的 config.runScripts 决定。
+//   false -> 执行 src/code.js（单文件模式，默认）
+//   true  -> 从 config.scriptHtmlPath 读取 HTML，按文档顺序执行所有内联 <script>
+const config = api.getConfig();
+
 try {
-    vm.run(new VMScript(target_code, "调试中"));
-} catch (e) {
-    console.error("目标代码报错:", e);
+    if (config.runScripts) {
+        const htmlPath = path.resolve(__dirname, "..", config.scriptHtmlPath);
+        const scripts = collectPageScripts(htmlPath);
+        console.log(`整页模式: ${config.scriptHtmlPath}，共 ${scripts.length} 个 <script>`);
+
+        for (let i = 0; i < scripts.length; i++) {
+            try {
+                vm.run(new VMScript(scripts[i], `script[${i}]`));
+            } catch (e) {
+                // 浏览器里单个脚本抛错不会阻止后续脚本，这里保持一致
+                console.error(`页面脚本 script[${i}] 报错:`, e);
+            }
+        }
+    } else {
+        // 目标代码在全局作用域执行，顶层 var 照旧成为 window 属性，间接 eval 才看得到。
+        const target_code = fs.readFileSync(`${__dirname}/code.js`, "utf8");
+        try {
+            vm.run(new VMScript(target_code, "调试中"));
+        } catch (e) {
+            console.error("目标代码报错:", e);
+        }
+    }
 } finally {
     api.showlog();
     debugger;

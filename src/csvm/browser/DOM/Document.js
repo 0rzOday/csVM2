@@ -169,7 +169,9 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "referrer", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get referrer", 0),
+        get: __autoFn("get referrer", 0,function(){
+            return "";
+        }),
         set: undefined,
     });
     // cookie

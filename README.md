@@ -24,6 +24,13 @@
 #### -----2026/11/08，Plugin 索引 / 名字属性从访问器改成 data 描述符（writable:false、enumerable 索引 true / 名字 false、configurable:true），索引与名字各存一个 MimeType 实例；item() / namedItem() 仍每次现造。剩余差异：同一属性重复读返回同一对象（真机 false）、delete 仍返回 true（真机 false）
 #### -----2026/11/08，window 身份修正：config.proxy 默认改为 false（默认 window === globalThis）；window.top / window.window 改成 Chrome 同款自有只读 accessor（get-only、e:true、c:false），getter 闭包 window_ref 避免自递归；WindowProperties.prototype 删除自有 constructor（真机从 EventTarget.prototype 继承）。self / parent / frames 仍缺失，本次未补
 #### -----2026/11/08，按最小化原则移除 navigator.plugins / mimeTypes 运行时实现：删除 Plugin / PluginArray / MimeType / MimeTypeArray、addPlugin、PluginData 及相关加载与访问器；保留 window 身份修正，md 仅留记录。目标回归 exit 0、0 报错
+#### -----2026/11/10，目标切到阿里 WAF `acw_sc__v2` 挑战页；发现 vm2 会给每个 `catch(e)` 注入 `e=VM2_INTERNAL_STATE...handleException(e);`，目标拿 `xXRQBR.toString()` 源码算自校验必然失败并卡在 `while(!![])`。在 `vm_safefunction.js` 的 `toString` 出口剥离注入段（本目标 4 处，19,160 → 18,872 字符，与原始函数源码逐字符一致），保留 vm2
+#### -----2026/11/10，新增整页脚本模式：`config.runScripts` + `config.scriptHtmlPath`，`index.js` 用 parse5 按文档顺序取内联 `<script>` 文本，在同一个 VM 里依次执行；script[0] 的 `var arg1` / `reload` 可被 script[1] 直接使用
+#### -----2026/11/10，日志支持运行时同步输出：`stream` / `streamInit` / `table` / `maxKeep` 四个开关；`log()` 入缓冲后立即打印单行（带对象、属性、值、状态），`_writing` 防止格式化触发代理递归；缓冲上限 5000 条，超出丢弃并计数；原 `showlog()` 汇总表格保留
+#### -----2026/11/10，补 `navigator.webdriver = false`（Navigator.prototype getter，ban_parent 保证原型直读抛 Illegal invocation）、`document.referrer = ""`、`document.location`（document 实例自有 accessor，get 返回 `csvm.memory.location`，e:true / c:false）
+#### -----2026/11/10，查清 `acw_tc` / `aliyungf_tc` 是服务端 `Set-Cookie` 下发的 HttpOnly cookie，`acw_sc__v2` 才是页面 JS 计算后写入；`document.cookie` 在真机看不到 HttpOnly 项。框架目前仍是单字符串 `csvm.memory.cookie`（整串替换），尚无 cookie jar / HttpOnly 区分
+#### -----2026/11/10，在自建阿里 WAF 测试站完成 2 次请求端到端验证：挑战页取当次 `renderData` + `acw_tc` → 框架算 `acw_sc__v2` → 带 `acw_tc + acw_sc__v2` 复请求，返回 `{"success":true}`；`acw_sc__v2` 前缀 `1234cf0d46-` 稳定，尾部随时间变化
+#### -----2026/11/10，当前工作区为调试配置：`proxy:true`、`runScripts:true`；正式回归前应按需改回 `false`
 
 > 注：2026/11/08 的 Plugin / MimeType 运行时实现已在同日移除，相关进度条目保留为历史记录；当前代码不包含 `navigator.plugins` / `navigator.mimeTypes`。
 

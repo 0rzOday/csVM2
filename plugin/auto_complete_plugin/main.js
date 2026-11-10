@@ -5,7 +5,7 @@ const { parse, HELPERS } = require("./Analysis");
 const { AutoComplete } = require("./collector");
 
 // 目标原型（生成代码里的表达式）
-const TARGET = "MimeTypeArray.prototype";
+const TARGET = "document";
 
 // 目标文件
 const TARGET_FILE_PATH = path.join(
@@ -16,7 +16,7 @@ const TARGET_FILE_PATH = path.join(
     "csvm",
     "browser",
     //"DOM",
-    "MimeTypeArray.js"
+    "document.js"
 );
 
 // 首次插入用的占位符

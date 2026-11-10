@@ -150,7 +150,9 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
         configurable: false,
         enumerable: true,
         writable: false,
-        value: __autoFn("reload", 0),
+        value: __autoFn("reload", 0,function(){
+            return undefined;
+        }),
     });
     // replace
     Object.defineProperty(location, "replace", {
@@ -179,3 +181,4 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
 
 location.__proto__=Location.prototype;
 location=csvm.proxy(location,"location");
+csvm.memory.location=location;

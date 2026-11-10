@@ -5,13 +5,29 @@ csvm.memory = {
         print:true,
         // 默认关闭代理：window 必须和 globalThis 是同一个对象。
         // 调试时改成 true 可以看到 GET/SET 日志，但 window !== globalThis 是代理的代价，见 ISSUE-005。
-        proxy:false,
+        proxy:true,
         // 调试器 / util.inspect 给对象生成描述时会读 symbol 和 toString，
         // 那不是目标的行为；开着可以过滤掉这类噪音
         ignoreInspect:true,
         // 日志里是否显示框架加载阶段的记录（phase === "init"）
         // 关掉之后只看到目标代码产生的日志
         printInit:false,
+        // 启动模式：
+        //   false -> 执行 src/code.js（单文件模式，默认）
+        //   true  -> 从 scriptHtmlPath 读取 HTML，按文档顺序执行所有内联 <script>
+        runScripts:true,
+        // runScripts 为 true 时读取的 HTML 路径（相对项目根目录）
+        scriptHtmlPath:"src/dom.html",
+        // 运行时同步输出：每条日志立即打印一行，不用等目标跑完/报错
+        // 调试死循环时用这个；关掉则恢复成只在 showlog() 里出表格
+        stream:true,
+        // 同步输出是否包含框架加载期（phase === "init"）的日志
+        streamInit:false,
+        // 运行结束后是否再打印一次汇总表格
+        table:true,
+        // 内存里最多保留多少条日志（供最后表格用），超出后丢弃最旧的
+        // 防止目标死循环时日志数组把内存吃爆
+        maxKeep:5000,
     }
 }; // 默认关闭代理；print 只在 proxy 开启时产生日志
 // 当前阶段："init" 框架加载期，"target" 目标代码运行期

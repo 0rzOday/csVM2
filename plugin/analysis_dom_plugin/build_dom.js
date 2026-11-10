@@ -64,7 +64,7 @@ const header = [
     "// 自动生成，请勿手改",
     "// 来源：src/dom.html",
     "// 生成：node plugin/analysis_dom_plugin/build_dom.js",
-    "// 包一层 IIFE：2031 个 n###_* 变量留在函数作用域，不挂到 window 上被目标扫到",
+    "// 包一层 IIFE：" + lines.length + " 个 n###_* 变量留在函数作用域，不挂到 window 上被目标扫到",
     "(function () {",
     "",
 ].join("\r\n");

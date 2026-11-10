@@ -223,7 +223,9 @@ Object.defineProperty(Navigator.prototype, Symbol.toStringTag, { value: "Navigat
     Object.defineProperty(Navigator.prototype, "webdriver", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get webdriver", 0),
+        get: __autoFn("get webdriver", 0 ,function(){
+            return false;
+        }),
         set: undefined,
     });
     // pdfViewerEnabled
