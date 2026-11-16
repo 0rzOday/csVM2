@@ -60,28 +60,34 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "implementation", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get implementation", 0),
+        get: __autoFn("get implementation", 0, function () { return __getImpl(); }),
         set: undefined,
     });
     // URL
     Object.defineProperty(Document.prototype, "URL", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get URL", 0),
+        get: __autoFn("get URL", 0, function () {
+            try { return String(csvm.memory.location && csvm.memory.location.href); } catch (e) {}
+            return "https://www.fangdi.com.cn/";
+        }),
         set: undefined,
     });
     // documentURI
     Object.defineProperty(Document.prototype, "documentURI", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get documentURI", 0),
+        get: __autoFn("get documentURI", 0, function () {
+            try { return String(csvm.memory.location && csvm.memory.location.href); } catch (e) {}
+            return "https://www.fangdi.com.cn/";
+        }),
         set: undefined,
     });
     // compatMode
     Object.defineProperty(Document.prototype, "compatMode", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get compatMode", 0),
+        get: __autoFn("get compatMode", 0, function () { return "CSS1Compat"; }),
         set: undefined,
     });
     // characterSet
@@ -97,21 +103,21 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "charset", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get charset", 0),
+        get: __autoFn("get charset", 0, function () { return "UTF-8"; }),
         set: undefined,
     });
     // inputEncoding
     Object.defineProperty(Document.prototype, "inputEncoding", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get inputEncoding", 0),
+        get: __autoFn("get inputEncoding", 0, function () { return "UTF-8"; }),
         set: undefined,
     });
     // contentType
     Object.defineProperty(Document.prototype, "contentType", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get contentType", 0),
+        get: __autoFn("get contentType", 0, function () { return "text/html"; }),
         set: undefined,
     });
     // doctype
@@ -131,7 +137,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
             if (!thisNode) return null;
             for (var i = 0; i < thisNode["childNodes"]["length"]; i++) {
                 var cd = csvm.memory.Dom.get(thisNode.childNodes[i]);
-                if (cd && cd.nodeType === 1) return thisNode.childNodes[i];
+                if (cd && cd.nodeType === 1) return __maybeWrapElement(thisNode.childNodes[i]);
             }
             return null;
         }),
@@ -178,11 +184,112 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "cookie", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get cookie", 0,function(){
-            return csvm.memory.cookie;
+        get: __autoFn("get cookie", 0, function () {
+            var out = [];
+            for (var name in csvm.memory.cookies) {
+                out.push(name + "=" + csvm.memory.cookies[name]);
+            }
+            return out.join("; ");
         }),
-        set: __autoFn("set cookie", 1,function(cookie){
-            csvm.memory.cookie=cookie;
+        set: __autoFn("set cookie", 1, function (cookie) {
+            // [DIAG] 临时输出算出的 P，供端到端验证
+            var __raw = String(cookie);
+            try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[COOKIE-SET] " + __raw.slice(0, 80)); } catch (_e) {}
+            if (__raw.indexOf("UA1L1zGonajvP=") === 0) {
+                console.log("[COOKIE-P] " + __raw.split(";")[0]);
+            }
+            var parts = String(cookie).split(";");
+            var pair = parts.shift();
+            var eq = pair.indexOf("=");
+            if (eq === -1) return;
+
+            var name = pair.slice(0, eq).trim();
+            var value = pair.slice(eq + 1).trim();
+            var expired = false;
+
+            for (var i = 0; i < parts.length; i++) {
+                var attr = parts[i].trim();
+                var lower = attr.toLowerCase();
+                if (lower.indexOf("max-age=") === 0) {
+                    var maxAge = parseInt(attr.slice(8), 10);
+                    if (!isNaN(maxAge) && maxAge <= 0) expired = true;
+                } else if (lower.indexOf("expires=") === 0) {
+                    var time = Date.parse(attr.slice(8));
+                    if (!isNaN(time) && time <= Date.now()) expired = true;
+                }
+            }
+
+            if (expired) delete csvm.memory.cookies[name];
+            else csvm.memory.cookies[name] = value;
+
+            // 兼容旧代码：memory.cookie 保存当前 document.cookie 文本
+            var out = [];
+            for (var k in csvm.memory.cookies) out.push(k + "=" + csvm.memory.cookies[k]);
+            csvm.memory.cookie = out.join("; ");
+
+            // [DIAG] 记录“写 P 那一刻”的状态，便于和真机同一时刻对比
+            if (csvm.memory.config.pDump === true && name === "UA1L1zGonajvP") {
+                try {
+                    var __ts = globalThis.$_ts || {};
+                    function __h(v){var s=String(v),h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h;}
+                    var __st = {
+                        cookie: String(csvm.memory.cookie).slice(0, 400),
+                        tsKeys: Object.keys(__ts).sort().join(','),
+                        tsL: (function () {
+                            try {
+                                var l = __ts["l__"], t = typeof l;
+                                if (t === 'string') return 's:' + l.length + ':h' + __h(l) + ':' + l.slice(0, 40);
+                                if (l && t === 'object') return 'o:' + Object.keys(l).join('|') + ':' + String(l).slice(0, 60);
+                                return t + ':' + String(l).slice(0, 60);
+                            } catch (e) { return 'ERR'; }
+                        })(),
+                        cdLen: typeof __ts.cd === 'string' ? __ts.cd.length : -1,
+                        cdH: typeof __ts.cd === 'string' ? __h(__ts.cd) : -1,
+                        nsd: String(__ts.nsd),
+                        adCall: (typeof globalThis.__adCall === 'number' ? globalThis.__adCall : -1),
+                        allLen: (function(){try{return document.all.length;}catch(e){return 'ERR';}})(),
+                        allTags: (function(){try{var a=document.all,n=a.length,o=[];for(var i=0;i<n;i++){var el=a[i]||a.item(i);o.push(el?(el.tagName||el.nodeName||el.id||el.name||"?"):"null");}return o.join(",");}catch(e){return "ERR";}})(),
+                        ua: String(navigator.userAgent).slice(0, 40),
+                        winKeys: (function(){var n=0;for(var k in window)n++;return n;})(),
+                        docKeys: (function(){var n=0;for(var k in document)n++;return n;})(),
+                        now: Date.now()
+                    };
+                    console.log("[P-STATE] " + JSON.stringify(__st));
+                    try {
+                        if (csvm.memory.config.pRing === true && typeof globalThis.__adRingGet === "function") {
+                            console.log("[P-RING]" + globalThis.__adRingGet());
+                            if (typeof globalThis.__adRecOn === "function") globalThis.__adRecOn(50000);
+                        }
+                    } catch (e) {}
+                    try { console.log("[P-STACK] " + String(new Error().stack || "").split(String.fromCharCode(10)).slice(1, 22).join(" >> ")); } catch (e) {}
+                } catch (e) { console.log("[P-STATE-ERR] " + (e && e.message)); }
+                try {
+                    var __ref = Object.getOwnPropertyDescriptor(document, "referrer");
+                    csvm.memory.__pDump = JSON.stringify({
+                        docOwn: Object.getOwnPropertyNames(document),
+                        refDesc: __ref ? { get: !!__ref.get, en: __ref.enumerable, cf: __ref.configurable } : null,
+                        cookie: csvm.memory.cookie,
+                        allLen: (function () { try { return document.all.length; } catch (e) { return -1; } })(),
+                        tsKeys: (function () { try { var t = globalThis.$_ts; return t ? Reflect.ownKeys(t).map(String) : null; } catch (e) { return String(e); } })(),
+                        tsDump: (function () { try {
+                            var t = globalThis.$_ts;
+                            if (!t || typeof t !== 'object') return String(t);
+                            var out = {};
+                            Object.keys(t).forEach(function (k) {
+                                var v; try { v = t[k]; } catch (e) { out[k] = 'THROW'; return; }
+                                var ty = typeof v;
+                                if (ty === 'string') { var h = 0; for (var i = 0; i < v.length; i++) h = (h * 31 + v.charCodeAt(i)) | 0; out[k] = 's:' + v.length + ':' + h; }
+                                else if (ty === 'number' || ty === 'boolean') out[k] = ty + ':' + String(v);
+                                else if (ty === 'function') out[k] = 'f:' + (v.name || '');
+                                else if (v === null) out[k] = 'null';
+                                else if (Array.isArray(v)) { var h2 = 0, a = []; for (var j = 0; j < v.length; j++) { var s = String((typeof v[j] === 'object' && v[j] !== null) ? (Array.isArray(v[j]) ? 'arr' + v[j].length : 'obj') : v[j]); a.push(s); for (var m = 0; m < s.length; m++) h2 = (h2 * 31 + s.charCodeAt(m)) | 0; } out[k] = 'a:' + v.length + ':' + h2; }
+                                else out[k] = 'o:' + Object.keys(v).join(',');
+                            });
+                            return out;
+                        } catch (e) { return 'ERR:' + e.message; } })()
+                    });
+                } catch (e) {}
+            }
         }),
     });
     // lastModified
@@ -196,14 +303,14 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "readyState", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get readyState", 0),
+        get: __autoFn("get readyState", 0, function () { return "complete"; }),
         set: undefined,
     });
     // title
     Object.defineProperty(Document.prototype, "title", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get title", 0),
+        get: __autoFn("get title", 0, function () { return ""; }),
         set: __autoFn("set title", 1),
     });
     // dir
@@ -213,60 +320,87 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         get: __autoFn("get dir", 0),
         set: __autoFn("set dir", 1),
     });
+    // 从 document 的节点树里找指定 tag 的元素（body / head 用）
+    function __findElement(node, tag) {
+        var d = csvm.memory.Dom.get(node);
+        if (!d) return null;
+        if (d.tag === tag) return node;
+        for (var i = 0; i < d.childNodes.length; i++) {
+            var found = __findElement(d.childNodes[i], tag);
+            if (found) return found;
+        }
+        return null;
+    }
     // body
     Object.defineProperty(Document.prototype, "body", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get body", 0),
+        get: __autoFn("get body", 0, function () {
+            var root = csvm.memory.Dom.get(this);
+            if (!root) return null;
+            for (var i = 0; i < root.childNodes.length; i++) {
+                var found = __findElement(root.childNodes[i], "body");
+                if (found) return __maybeWrapElement(found);
+            }
+            return null;
+        }),
         set: __autoFn("set body", 1),
     });
     // head
     Object.defineProperty(Document.prototype, "head", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get head", 0),
+        get: __autoFn("get head", 0, function () {
+            var root = csvm.memory.Dom.get(this);
+            if (!root) return null;
+            for (var i = 0; i < root.childNodes.length; i++) {
+                var found = __findElement(root.childNodes[i], "head");
+                if (found) return __maybeWrapElement(found);
+            }
+            return null;
+        }),
         set: undefined,
     });
     // images
     Object.defineProperty(Document.prototype, "images", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get images", 0),
+        get: __autoFn("get images", 0, function () { return csvm.collection(csvm.queryAll(this, "img")); }),
         set: undefined,
     });
     // embeds
     Object.defineProperty(Document.prototype, "embeds", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get embeds", 0),
+        get: __autoFn("get embeds", 0, function () { return csvm.collection(csvm.queryAll(this, "embed")); }),
         set: undefined,
     });
     // plugins
     Object.defineProperty(Document.prototype, "plugins", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get plugins", 0),
+        get: __autoFn("get plugins", 0, function () { return csvm.collection(csvm.queryAll(this, "embed")); }),
         set: undefined,
     });
     // links
     Object.defineProperty(Document.prototype, "links", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get links", 0),
+        get: __autoFn("get links", 0, function () { return csvm.collection(csvm.queryAll(this, "a, area")); }),
         set: undefined,
     });
     // forms
     Object.defineProperty(Document.prototype, "forms", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get forms", 0),
+        get: __autoFn("get forms", 0, function () { return csvm.collection(csvm.queryAll(this, "form")); }),
         set: undefined,
     });
     // scripts
     Object.defineProperty(Document.prototype, "scripts", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get scripts", 0),
+        get: __autoFn("get scripts", 0, function () { return csvm.collection(csvm.queryAll(this, "script")); }),
         set: undefined,
     });
     // currentScript
@@ -280,7 +414,9 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "defaultView", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get defaultView", 0),
+        get: __autoFn("get defaultView", 0, function () {
+            return (typeof window !== "undefined") ? window : globalThis;
+        }),
         set: undefined,
     });
     // designMode
@@ -301,7 +437,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "anchors", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get anchors", 0),
+        get: __autoFn("get anchors", 0, function () { return csvm.collection(csvm.queryAll(this, "a[name]")); }),
         set: undefined,
     });
     // applets
@@ -346,11 +482,224 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         get: __autoFn("get bgColor", 0),
         set: __autoFn("set bgColor", 1),
     });
+    // ---------- HTMLAllCollection（document.all）替身 ---------------------
+    // 真机 document.all 是 HTMLDDA：typeof 为 "undefined"、布尔为 false，
+    // 但同时可索引、有 length。纯 JS 造不出内部槽，这里造一个带 __rsdda
+    // 标记的替身，typeof/真假语义由 index.js 里的 VM 指令补丁处理。
+    const __allCache = new WeakMap();
+    function __allCollectElements(root) {
+        const out = [];
+        (function walk(node) {
+            const rec = csvm.memory.Dom.get(node);
+            if (!rec) return;
+            const kids = rec.childNodes || [];
+            for (let i = 0; i < kids.length; i++) {
+                const k = kids[i];
+                const kr = csvm.memory.Dom.get(k);
+                if (kr && kr.nodeType === 1) out.push(k);
+                if (kr) walk(k);
+            }
+        })(root);
+        return out;
+    }
+    function __allNamed(els, name) {
+        for (let i = 0; i < els.length; i++) {
+            const r = csvm.memory.Dom.get(els[i]);
+            if (r && r.data && (String(r.data.id) === name || String(r.data.name) === name)) return els[i];
+        }
+        return null;
+    }
+    function __makeHTMLAllCollection(doc) {
+        let cached = __allCache.get(doc);
+        if (cached) return cached;
+        const collect = function () { return __allCollectElements(doc); };
+        const AllCtor = function HTMLAllCollection() { throw new TypeError("Illegal constructor"); };
+        const proto = Object.create(Object.prototype);
+        Object.defineProperty(proto, "constructor", { value: AllCtor, writable: true, enumerable: false, configurable: true });
+        Object.defineProperty(proto, "length", {
+            configurable: true,
+            enumerable: true,
+            get: function () { return collect().length; },
+        });
+        proto.item = { item(i) { const a = collect(); i = Number(i) | 0; return i >= 0 && i < a.length ? a[i] : null; } }.item;
+        proto.namedItem = { namedItem(n) { return __allNamed(collect(), String(n)); } }.namedItem;
+        AllCtor.prototype = proto;
+
+        const target = Object.create(proto);
+        Object.defineProperty(target, "__rsdda", { value: true, writable: false, enumerable: false, configurable: false });
+
+        const handler = {
+            get: function (t, prop) {
+                if (prop === "length") return collect().length;
+                if (prop === "item") return proto.item;
+                if (prop === "namedItem") return proto.namedItem;
+                if (prop === Symbol.toStringTag) return "HTMLAllCollection";
+                if (prop === Symbol.iterator) {
+                    return function* () {
+                        const a = collect();
+                        for (let i = 0; i < a.length; i++) yield a[i];
+                    };
+                }
+                if (prop === "toString") return function () { return "[object HTMLAllCollection]"; };
+                if (prop === "valueOf") return function () { return undefined; };
+                if (typeof prop === "string" && /^\d+$/.test(prop)) {
+                    const a = collect();
+                    const i = Number(prop);
+                    return i < a.length ? a[i] : undefined;
+                }
+                if (typeof prop === "string") {
+                    const el = __allNamed(collect(), prop);
+                    if (el) return el;
+                }
+                return Reflect.get(t, prop);
+            },
+            has: function (t, prop) {
+                if (typeof prop === "string" && /^\d+$/.test(prop)) return Number(prop) < collect().length;
+                if (typeof prop === "string" && __allNamed(collect(), prop)) return true;
+                return Reflect.has(t, prop);
+            },
+            ownKeys: function () {
+                const a = collect();
+                const keys = a.map(function (_, i) { return String(i); });
+                for (let i = 0; i < a.length; i++) {
+                    const r = csvm.memory.Dom.get(a[i]);
+                    if (r && r.data) {
+                        if (r.data.id) keys.push(String(r.data.id));
+                        if (r.data.name) keys.push(String(r.data.name));
+                    }
+                }
+                return keys;
+            },
+            getOwnPropertyDescriptor: function (t, prop) {
+                if (typeof prop === "string" && /^\d+$/.test(prop)) {
+                    const a = collect();
+                    const i = Number(prop);
+                    if (i < a.length) return { value: a[i], writable: false, enumerable: true, configurable: true };
+                }
+                const own = Reflect.getOwnPropertyDescriptor(t, prop);
+                if (own) return own;
+                if (typeof prop === "string") {
+                    const el = __allNamed(collect(), prop);
+                    if (el) return { value: el, writable: false, enumerable: true, configurable: true };
+                }
+                return undefined;
+            },
+        };
+
+        cached = new Proxy(target, handler);
+        __allCache.set(doc, cached);
+        return cached;
+    }
+
+    // 原生 undetectable 对象（来自 native/dda 扩展）的 HTMLAllCollection 装饰。
+    // 内部槽由 V8 提供；这里按真机形状补原型链：length/item/namedItem/constructor
+    // 都在 HTMLAllCollection.prototype 上，实例 own 只有索引/命名元素。
+    csvm.decorateNativeAll = function (obj) {
+        const collect = function () { return __allCollectElements(document); };
+        const AllCtor = function HTMLAllCollection() { throw new TypeError("Illegal constructor"); };
+        if (csvm.safefunction) csvm.safefunction(AllCtor, "HTMLAllCollection");
+
+        const proto = Object.create(Object.prototype);
+        // 真机 proto 的键顺序：length、item、namedItem、constructor
+        Object.defineProperty(proto, "length", {
+            configurable: true,
+            enumerable: true,
+            get: __autoFn("get length", 0, function () { var n = collect().length; try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[DDA] length=" + n); } catch (e) {} return n; }),
+        });
+        proto.item = __autoFn("item", 1, function (i) {
+            try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[DDA] item(" + i + ")"); } catch (e) {}
+            const a = collect();
+            i = Number(i) | 0;
+            return i >= 0 && i < a.length ? a[i] : null;
+        });
+        proto.namedItem = __autoFn("namedItem", 1, function (n) {
+            try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[DDA] namedItem(" + n + ")"); } catch (e) {}
+            return __allNamed(collect(), String(n));
+        });
+        Object.defineProperty(proto, "constructor", {
+            value: AllCtor,
+            writable: true,
+            enumerable: false,
+            configurable: true,
+        });
+        try {
+            Object.defineProperty(proto, Symbol.toStringTag, {
+                value: "HTMLAllCollection",
+                configurable: true,
+                enumerable: false,
+                writable: false,
+            });
+        } catch (e) {}
+        AllCtor.prototype = proto;
+
+        try { Object.setPrototypeOf(obj, proto); } catch (e) {}
+
+        // 实例 own：索引进制 + 命名元素（真机 ownKeys 里是这些）
+        try {
+            const n = Math.min(collect().length, 128);
+            for (let i = 0; i < n; i++) {
+                (function (idx) {
+                    Object.defineProperty(obj, String(idx), {
+                        configurable: true,
+                        enumerable: true,
+                        get: function () { try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[DDA] [" + idx + "]"); } catch (e) {} return collect()[idx]; },
+                    });
+                })(i);
+            }
+            for (let i = 0; i < n; i++) {
+                (function (el) {
+                    const rec = csvm.memory.Dom.get(el);
+                    if (!rec || !rec.data) return;
+                    const name = rec.data.id || rec.data.name;
+                    if (!name) return;
+                    Object.defineProperty(obj, String(name), {
+                        configurable: true,
+                        enumerable: false,
+                        get: function () { return el; },
+                    });
+                })(collect()[i]);
+            }
+        } catch (e) {}
+
+        try {
+            Object.defineProperty(globalThis, "HTMLAllCollection", {
+                value: AllCtor,
+                writable: true,
+                enumerable: false,
+                configurable: true,
+            });
+        } catch (e) {}
+
+        // document.all(0) / document.all('id')：原生调用处理器会转发到这个 Symbol 回调
+        try {
+            var __callSym = Symbol.for("nodejs.dda.call");
+            Object.defineProperty(obj, __callSym, {
+                configurable: true,
+                enumerable: false,
+                value: csvm.safefunction(function (arg) {
+                    var a = collect();
+                    var s = String(arg);
+                    if (s !== "" && /^\d+$/.test(s)) {
+                        var i = Number(s) | 0;
+                        return i >= 0 && i < a.length ? a[i] : null;
+                    }
+                    return __allNamed(a, s);
+                }, ""),
+            });
+        } catch (e) {}
+        return obj;
+    };
+
     // all
     Object.defineProperty(Document.prototype, "all", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get all", 0),
+        get: __autoFn("get all", 0, function () {
+            // 注意：不能用 if(ddaObject)，undetectable 对象本身就是 falsy
+            if (csvm.memory.hasNativeDda) return csvm.memory.ddaObject;
+            if (csvm.memory.config.ddaFake === true) return __makeHTMLAllCollection(this);
+            return undefined;
+        }),
         set: undefined,
     });
     // scrollingElement
@@ -378,14 +727,18 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "hidden", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get hidden", 0),
+        get: __autoFn("get hidden", 0, function () {
+            return false;
+        }),
         set: undefined,
     });
     // visibilityState
     Object.defineProperty(Document.prototype, "visibilityState", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get visibilityState", 0),
+        get: __autoFn("get visibilityState", 0,function(){
+            return "visible";
+        }),
         set: undefined,
     });
     // wasDiscarded
@@ -490,7 +843,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "fullscreenEnabled", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get fullscreenEnabled", 0),
+        get: __autoFn("get fullscreenEnabled", 0, function () { return true; }),
         set: __autoFn("set fullscreenEnabled", 1),
     });
     // fullscreen
@@ -1302,14 +1655,17 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     Object.defineProperty(Document.prototype, "activeElement", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get activeElement", 0),
+        get: __autoFn("get activeElement", 0, function () {
+            if (csvm.activeElement) return csvm.activeElement;
+            return this.body || this.documentElement || null;
+        }),
         set: undefined,
     });
     // styleSheets
     Object.defineProperty(Document.prototype, "styleSheets", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get styleSheets", 0),
+        get: __autoFn("get styleSheets", 0, function () { return csvm.makeStyleSheetList([]); }),
         set: undefined,
     });
     // pointerLockElement
@@ -1429,15 +1785,69 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createComment", 1),
+        value: __autoFn("createComment", 1, function (data) {
+            return csvm.DomGenerator("#comment", { text: data == null ? "" : String(data) }, null);
+        }),
     });
     // createDocumentFragment
     Object.defineProperty(Document.prototype, "createDocumentFragment", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createDocumentFragment", 0),
+        value: __autoFn("createDocumentFragment", 0, function () {
+            return csvm.DomGenerator("#document-fragment", {}, null);
+        }),
     });
+    function __maybeWrapElement(el) {
+        return el && csvm.memory.config.elemLog === true ? __diagWrapElement(el) : el;
+    }
+
+    // [DIAG] 元素访问插桩：把 createElement 返回的元素包一层日志 Proxy。
+    // 只在 config.elemLog 打开时使用；注意会影响元素身份比较，仅用于诊断。
+    function __diagWrapElement(target) {
+        if (!csvm.memory.__elemProxyCache) csvm.memory.__elemProxyCache = new WeakMap();
+        const cache = csvm.memory.__elemProxyCache;
+        if (cache.has(target)) return cache.get(target);
+        const fnCache = new WeakMap();
+        const log = function (kind, prop) {
+            csvm.memory.__elemHits = (csvm.memory.__elemHits || 0) + 1;
+            if (csvm.memory.__elemHits <= 500) {
+                try { console.log("[ELEM-" + kind + "] " + String(prop) + "\n" + new Error().stack.split("\n").slice(2, 6).join("\n")); } catch (e) {}
+            }
+        };
+        const proxy = new Proxy(target, {
+            get: function (t, prop) {
+                log("GET", prop);
+                const v = Reflect.get(t, prop, t);
+                if (typeof v === "function") {
+                    if (fnCache.has(v)) return fnCache.get(v);
+                    const f = new Proxy(v, { apply: function (fn, th, args) { return Reflect.apply(fn, t, args); } });
+                    fnCache.set(v, f);
+                    return f;
+                }
+                return v;
+            },
+            set: function (t, prop, value) {
+                log("SET", prop);
+                return Reflect.set(t, prop, value, t);
+            },
+            has: function (t, prop) {
+                log("HAS", prop);
+                return Reflect.has(t, prop);
+            },
+            getOwnPropertyDescriptor: function (t, prop) {
+                log("DESC", prop);
+                return Reflect.getOwnPropertyDescriptor(t, prop);
+            },
+            ownKeys: function (t) {
+                log("KEYS", "");
+                return Reflect.ownKeys(t);
+            },
+        });
+        cache.set(target, proxy);
+        return proxy;
+    }
+
     // createElement
     Object.defineProperty(Document.prototype, "createElement", {
         configurable: true,
@@ -1446,9 +1856,10 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         value: __autoFn("createElement", 1, function (localName) {
             // 全部转为小写
             var localName = String(localName).toLowerCase();
+            try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[CREATE] " + localName); } catch (e) {}
             // 创建新node到csvm.memory.Dom
             const newNode = csvm.DomGenerator(localName, {}, null)
-            return newNode;
+            return csvm.memory.config.elemLog === true ? __diagWrapElement(newNode) : newNode;
         }),
     });
     // createElementNS
@@ -1456,28 +1867,67 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createElementNS", 2),
+        value: __autoFn("createElementNS", 2, function (ns, qualifiedName) {
+            var q = String(qualifiedName);
+            var i = q.indexOf(":");
+            var prefix = i === -1 ? null : q.slice(0, i);
+            var local = (i === -1 ? q : q.slice(i + 1)).toLowerCase();
+            var newNode = csvm.DomGenerator(local, { __ns: ns === null || ns === undefined ? null : String(ns), __prefix: prefix }, null);
+            return csvm.memory.config.elemLog === true ? __diagWrapElement(newNode) : newNode;
+        }),
     });
     // createEvent
     Object.defineProperty(Document.prototype, "createEvent", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createEvent", 1),
+        value: __autoFn("createEvent", 1, function (type) {
+            // 真机 Chrome 的 legacy event type 映射；不支持的类型抛 NotSupportedError
+            // （TouchEvent / WheelEvent / ProgressEvent / ErrorEvent / SubmitEvent … 都会抛）
+            var map = {
+                Event: "Event", Events: "Event",
+                CustomEvent: "CustomEvent",
+                UIEvent: "UIEvent", UIEvents: "UIEvent",
+                MouseEvent: "MouseEvent", MouseEvents: "MouseEvent",
+                KeyboardEvent: "KeyboardEvent", KeyboardEvents: "KeyboardEvent",
+                FocusEvent: "FocusEvent",
+                CompositionEvent: "CompositionEvent",
+                DragEvent: "DragEvent",
+                MessageEvent: "MessageEvent",
+                StorageEvent: "StorageEvent",
+                HashChangeEvent: "HashChangeEvent",
+                TransitionEvent: "TransitionEvent",
+                TextEvent: "TextEvent",
+            };
+            var n = String(type == null ? "" : type);
+            if (!n) throw new TypeError("Failed to execute 'createEvent' on 'Document': 1 argument required, but only 0 present.");
+            var ctorName = map[n];
+            if (!ctorName) {
+                var err = new Error("Failed to execute 'createEvent' on 'Document': The provided event type ('" + n + "') is invalid.");
+                err.name = "NotSupportedError";
+                throw err;
+            }
+            var C = (typeof globalThis !== "undefined" && typeof globalThis[ctorName] === "function") ? globalThis[ctorName] : Event;
+            return new C("", {});
+        }),
     });
     // createExpression
     Object.defineProperty(Document.prototype, "createExpression", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createExpression", 1),
+        value: __autoFn("createExpression", 2, function (expression, resolver) {
+            return csvm.makeXPathExpression(expression);
+        }),
     });
     // createNSResolver
     Object.defineProperty(Document.prototype, "createNSResolver", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createNSResolver", 1),
+        value: __autoFn("createNSResolver", 1, function (node) {
+            return csvm.safefunction({ lookupNamespaceURI(prefix) { return null; } }.lookupNamespaceURI, "lookupNamespaceURI");
+        }),
     });
     // createNodeIterator
     Object.defineProperty(Document.prototype, "createNodeIterator", {
@@ -1498,14 +1948,53 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createRange", 0),
+        value: __autoFn("createRange", 0, function () {
+            var state = { startContainer: this, startOffset: 0, endContainer: this, endOffset: 0, collapsed: true };
+            var range = {
+                get startContainer() { return state.startContainer; },
+                get startOffset() { return state.startOffset; },
+                get endContainer() { return state.endContainer; },
+                get endOffset() { return state.endOffset; },
+                get collapsed() { return state.startContainer === state.endContainer && state.startOffset === state.endOffset; },
+                get commonAncestorContainer() { return state.startContainer; },
+                setStart: function (node, off) { state.startContainer = node; state.startOffset = Number(off) || 0; },
+                setEnd: function (node, off) { state.endContainer = node; state.endOffset = Number(off) || 0; },
+                setStartBefore: function (node) { state.startContainer = node; state.startOffset = 0; },
+                setStartAfter: function (node) { state.startContainer = node; state.startOffset = 1; },
+                setEndBefore: function (node) { state.endContainer = node; state.endOffset = 0; },
+                setEndAfter: function (node) { state.endContainer = node; state.endOffset = 1; },
+                selectNode: function (node) { state.startContainer = node; state.startOffset = 0; state.endContainer = node; state.endOffset = 1; },
+                selectNodeContents: function (node) {
+                    state.startContainer = node; state.startOffset = 0;
+                    state.endContainer = node;
+                    var d = csvm.memory.Dom.get(node);
+                    state.endOffset = d ? d.childNodes.length : 0;
+                },
+                collapse: function (toStart) { if (toStart !== false) { state.endContainer = state.startContainer; state.endOffset = state.startOffset; } else { state.startContainer = state.endContainer; state.startOffset = state.endOffset; } },
+                cloneRange: function () { var r = this.ownerDocument ? this.ownerDocument.createRange() : null; if (r) { r.setStart(state.startContainer, state.startOffset); r.setEnd(state.endContainer, state.endOffset); } return r; },
+                detach: function () {},
+                deleteContents: function () {},
+                extractContents: function () { return document.createDocumentFragment(); },
+                cloneContents: function () { return document.createDocumentFragment(); },
+                insertNode: function (node) { if (state.startContainer && state.startContainer.appendChild) state.startContainer.appendChild(node); },
+                surroundContents: function () {},
+                comparePoint: function () { return 0; },
+                intersectsNode: function () { return false; },
+                toString: function () { return ""; },
+                ownerDocument: this,
+            };
+            try { Object.defineProperty(range, Symbol.toStringTag, { value: "Range", configurable: true }); } catch (e) {}
+            return range;
+        }),
     });
     // createTextNode
     Object.defineProperty(Document.prototype, "createTextNode", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("createTextNode", 1),
+        value: __autoFn("createTextNode", 1, function (data) {
+            return csvm.DomGenerator("#text", { text: data == null ? "" : String(data) }, null);
+        }),
     });
     // createTreeWalker
     Object.defineProperty(Document.prototype, "createTreeWalker", {
@@ -1533,7 +2022,10 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("evaluate", 2),
+        value: __autoFn("evaluate", 5, function (expression, contextNode, resolver, type, result) {
+            var de = this.documentElement;
+            return csvm.makeXPathResult(de ? [de] : []);
+        }),
     });
     // execCommand
     Object.defineProperty(Document.prototype, "execCommand", {
@@ -1592,8 +2084,8 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                 return null;
             }
             const domTree = csvm.memory.Dom;
-            const val = DfsFind(document, id);
-            return val;
+            const val = DfsFind(this, id);
+            return __maybeWrapElement(val);
 
         }),
     });
@@ -1602,15 +2094,89 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("getElementsByClassName", 1),
+        value: __autoFn("getElementsByClassName", 1, function (names) {
+            var want = String(names).split(/\s+/).filter(Boolean);
+            var self = this;
+            return csvm.makeLiveHTMLCollection(function () {
+                var out = [];
+                var domTree = csvm.memory.Dom;
+                (function walk(node) {
+                    var d = domTree.get(node);
+                    if (!d) return;
+                    for (var i = 0; i < d.childNodes.length; i++) {
+                        var child = d.childNodes[i];
+                        var cd = domTree.get(child);
+                        if (cd && cd.nodeType === 1) {
+                            var cls = String((cd.data && cd.data["class"]) || "").split(/\s+/).filter(Boolean);
+                            var ok = true;
+                            for (var j = 0; j < want.length; j++) if (cls.indexOf(want[j]) === -1) { ok = false; break; }
+                            if (ok) out.push(__maybeWrapElement(child));
+                        }
+                        walk(child);
+                    }
+                })(self);
+                return out;
+            });
+        }),
     });
     // getElementsByName
     Object.defineProperty(Document.prototype, "getElementsByName", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("getElementsByName", 1),
+        value: __autoFn("getElementsByName", 1, function (name) {
+            var n = String(name == null ? "" : name);
+            var out = [];
+            var domTree = csvm.memory.Dom;
+            var self = this;
+            (function walk(node) {
+                var d = domTree.get(node);
+                if (!d) return;
+                for (var i = 0; i < d.childNodes.length; i++) {
+                    var child = d.childNodes[i];
+                    var cd = domTree.get(child);
+                    if (cd && cd.nodeType === 1) {
+                        var v = null;
+                        try { v = cd.data && cd.data.name; } catch (e) {}
+                        if (String(v) === n) out.push(__maybeWrapElement(child));
+                    }
+                    walk(child);
+                }
+            })(self);
+            return csvm.makeNodeList(out);
+        }),
     });
+    // [DIAG] 集合访问插桩（getElementsByTagName 等返回的数组）
+    function __diagWrapCollection(arr) {
+        if (!csvm.memory.__collProxyCache) csvm.memory.__collProxyCache = new WeakMap();
+        const cache = csvm.memory.__collProxyCache;
+        if (cache.has(arr)) return cache.get(arr);
+        const fnCache = new WeakMap();
+        const log = function (kind, prop) {
+            csvm.memory.__collHits = (csvm.memory.__collHits || 0) + 1;
+            if (csvm.memory.__collHits <= 300) {
+                try { console.log("[COLL-" + kind + "] " + String(prop) + "\n" + new Error().stack.split("\n").slice(2, 6).join("\n")); } catch (e) {}
+            }
+        };
+        const proxy = new Proxy(arr, {
+            get: function (t, prop) {
+                log("GET", prop);
+                const v = Reflect.get(t, prop, t);
+                if (typeof v === "function") {
+                    if (fnCache.has(v)) return fnCache.get(v);
+                    const f = new Proxy(v, { apply: function (fn, th, args) { return Reflect.apply(fn, t, args); } });
+                    fnCache.set(v, f);
+                    return f;
+                }
+                return v;
+            },
+            has: function (t, prop) { log("HAS", prop); return Reflect.has(t, prop); },
+            getOwnPropertyDescriptor: function (t, prop) { log("DESC", prop); return Reflect.getOwnPropertyDescriptor(t, prop); },
+        });
+        cache.set(arr, proxy);
+        return proxy;
+    }
+
     // getElementsByTagName
     Object.defineProperty(Document.prototype, "getElementsByTagName", {
         configurable: true,
@@ -1618,24 +2184,26 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         writable: true,
         value: __autoFn("getElementsByTagName", 1, function (tagName) {
             var target = String(tagName).toLowerCase();
-            var domTree = csvm.memory.Dom;
-            var out = [];
-
-            // 从 document 的后代开始遍历：doctype / html 这类直属子节点也会被匹配到
-            (function walk(node) {
-                var d = domTree.get(node);
-                if (!d) return;
-                for (var i = 0; i < d.childNodes.length; i++) {
-                    var child = d.childNodes[i];
-                    var cd = domTree.get(child);
-                    if (cd.nodeType === 1 && (target === "*" || cd.tag === target)) {
-                        out.push(child);
+            var self = this;
+            var live = function () {
+                var domTree = csvm.memory.Dom;
+                var out = [];
+                // 从 document 的后代开始遍历：doctype / html 这类直属子节点也会被匹配到
+                (function walk(node) {
+                    var d = domTree.get(node);
+                    if (!d) return;
+                    for (var i = 0; i < d.childNodes.length; i++) {
+                        var child = d.childNodes[i];
+                        var cd = domTree.get(child);
+                        if (cd && cd.nodeType === 1 && (target === "*" || String(cd.tag).toLowerCase() === target)) {
+                            out.push(__maybeWrapElement(child));
+                        }
+                        walk(child);
                     }
-                    walk(child);
-                }
-            })(document);
-
-            return out;
+                })(self);
+                return out;
+            };
+            return csvm.makeLiveHTMLCollection(csvm.memory.config.elemLog === true ? function () { return __diagWrapCollection(live()); } : live);
         }),
     });
     // getElementsByTagNameNS
@@ -1657,7 +2225,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("hasFocus", 0),
+        value: __autoFn("hasFocus", 0, function () { return true; }),
     });
     // hasStorageAccess
     Object.defineProperty(Document.prototype, "hasStorageAccess", {
@@ -1741,14 +2309,14 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("querySelector", 1),
+        value: __autoFn("querySelector", 1, function (sel) { return csvm.queryOne(this, sel) || null; }),
     });
     // querySelectorAll
     Object.defineProperty(Document.prototype, "querySelectorAll", {
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("querySelectorAll", 1),
+        value: __autoFn("querySelectorAll", 1, function (sel) { return csvm.collection(csvm.queryAll(this, sel)); }),
     });
     // releaseEvents
     Object.defineProperty(Document.prototype, "releaseEvents", {
@@ -1859,3 +2427,85 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
 
 Document.prototype.__proto__ = Node.prototype;
 Document = csvm.proxy(Document, "Document");
+
+// DOMImplementation：Chrome/jsdom 里 document.implementation 是对象，原先是 undefined。
+// 挑战的环境快照会记录这个属性（ring 里看到 implementation=undefined），
+// 是 type-9 [8,0] 目前唯一的候选来源。
+var __implApply = Reflect.apply;
+function __implFn(name, length, impl) {
+    var fn = { [name](...args) { return __implApply(impl, this, args); } }[name];
+    Object.defineProperty(fn, "name", { value: name, writable: false, enumerable: false, configurable: true });
+    Object.defineProperty(fn, "length", { value: length, writable: false, enumerable: false, configurable: true });
+    if (csvm.safefunction) csvm.safefunction(fn, name);
+    var w = csvm.proxy ? csvm.proxy(fn, name) : fn;
+    return csvm.safefunction ? csvm.safefunction(w, name) : w;
+}
+function __newImplDoc() {
+    var d = {};
+    d.__proto__ = (typeof HTMLDocument !== "undefined") ? HTMLDocument.prototype : Document.prototype;
+    try { csvm.memory.Dom.set(d, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] }); } catch (e) {}
+    return csvm.proxy ? csvm.proxy(d, "document") : d;
+}
+function __newDocType(name, publicId, systemId) {
+    var dt = {};
+    try { Object.defineProperty(dt, Symbol.toStringTag, { value: "DocumentType", configurable: true }); } catch (e) {}
+    dt.nodeType = 10;
+    dt.nodeName = String(name);
+    dt.name = String(name);
+    dt.publicId = String(publicId || "");
+    dt.systemId = String(systemId || "");
+    dt.nodeValue = null;
+    dt.ownerDocument = null;
+    return dt;
+}
+var DOMImplementation = function DOMImplementation() {
+    throw new TypeError("Illegal constructor");
+};
+csvm.safefunction(DOMImplementation, "DOMImplementation");
+Object.defineProperty(DOMImplementation.prototype, Symbol.toStringTag, { value: "DOMImplementation", configurable: true });
+Object.defineProperty(DOMImplementation.prototype, "hasFeature", {
+    configurable: true, enumerable: true, writable: true,
+    value: __implFn("hasFeature", 2, function () { return true; }),
+});
+Object.defineProperty(DOMImplementation.prototype, "createDocumentType", {
+    configurable: true, enumerable: true, writable: true,
+    value: __implFn("createDocumentType", 3, function (name, publicId, systemId) {
+        return __newDocType(name, publicId, systemId);
+    }),
+});
+Object.defineProperty(DOMImplementation.prototype, "createDocument", {
+    configurable: true, enumerable: true, writable: true,
+    value: __implFn("createDocument", 3, function (namespace, qualifiedName, doctype) {
+        var d = __newImplDoc();
+        try { if (doctype) d.appendChild(doctype); } catch (e) {}
+        if (qualifiedName) {
+            try {
+                var el = d.createElementNS ? d.createElementNS(namespace || null, qualifiedName) : d.createElement(qualifiedName);
+                d.appendChild(el);
+            } catch (e) {}
+        }
+        return d;
+    }),
+});
+Object.defineProperty(DOMImplementation.prototype, "createHTMLDocument", {
+    configurable: true, enumerable: true, writable: true,
+    value: __implFn("createHTMLDocument", 1, function (title) {
+        var d = __newImplDoc();
+        try {
+            var html = d.createElement("html"), head = d.createElement("head"), body = d.createElement("body");
+            var t = d.createElement("title");
+            if (title !== undefined) t.textContent = String(title);
+            head.appendChild(t);
+            html.appendChild(head);
+            html.appendChild(body);
+            d.appendChild(html);
+        } catch (e) {}
+        return d;
+    }),
+});
+var __implInstance = null;
+function __getImpl() {
+    if (!__implInstance) __implInstance = Object.create(DOMImplementation.prototype);
+    return __implInstance;
+}
+DOMImplementation = csvm.proxy(DOMImplementation, "DOMImplementation");

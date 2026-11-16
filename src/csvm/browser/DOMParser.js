@@ -63,7 +63,19 @@ Object.defineProperty(DOMParser.prototype,Symbol.toStringTag,{value:"DOMParser",
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("parseFromString", 2),
+        value: __autoFn("parseFromString", 2, function (str, type) {
+            var doc = csvm.DomGenerator("#document", {}, null);
+            try {
+                var nodes = csvm.htmlParse ? csvm.htmlParse(String(str == null ? "" : str)) : [];
+                var dd = csvm.memory.Dom.get(doc);
+                for (var i = 0; i < nodes.length; i++) {
+                    var nd = csvm.memory.Dom.get(nodes[i]);
+                    if (nd) nd.parent = doc;
+                    dd.childNodes.push(nodes[i]);
+                }
+            } catch (e) {}
+            return doc;
+        }),
     });
     // TODO constructor: DOMParser.prototype.constructor 需要手动指向接口对象
     // Symbol(Symbol.toStringTag) (symbol)

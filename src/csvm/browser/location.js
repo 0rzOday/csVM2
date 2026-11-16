@@ -63,7 +63,7 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
         configurable: false,
         enumerable: false,
         writable: false,
-        value: __autoFn("valueOf", 0),
+        value: __autoFn("valueOf", 0, function () { return this; }),
     });
     // ancestorOrigins
     Object.defineProperty(location, "ancestorOrigins", {
@@ -78,7 +78,7 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
         enumerable: true,
         get: __autoFn("get href", 0 ,function(){
             // 值不含引号：目标拿它拼 URL / 和 origin 比对
-            return "https://www.cde.org.cn/";
+            return "https://www.fangdi.com.cn/";
         }),
         set: __autoFn("set href", 1),
     });
@@ -86,56 +86,76 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
     Object.defineProperty(location, "origin", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get origin", 0),
+        get: __autoFn("get origin", 0, function () {
+            try {
+                var href = String(location.href);
+                var m = /^([a-z][a-z0-9+.-]*:)\/\/([^\/?#]*)/i.exec(href);
+                return m ? (m[1].toLowerCase() + "//" + m[2].toLowerCase()) : "";
+            } catch (e) { return ""; }
+        }),
         set: undefined,
     });
     // protocol
     Object.defineProperty(location, "protocol", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get protocol", 0),
+        get: __autoFn("get protocol", 0,function(){
+            return "https:";
+        }),
         set: __autoFn("set protocol", 1),
     });
     // host
     Object.defineProperty(location, "host", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get host", 0),
+        get: __autoFn("get host", 0, function(){
+            return "www.fangdi.com.cn";
+        }),
         set: __autoFn("set host", 1),
     });
     // hostname
     Object.defineProperty(location, "hostname", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get hostname", 0),
+        get: __autoFn("get hostname", 0,function(){
+            return 'www.fangdi.com.cn';
+        }),
         set: __autoFn("set hostname", 1),
     });
     // port
     Object.defineProperty(location, "port", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get port", 0),
+        get: __autoFn("get port", 0,function(){
+            return "";
+        }),
         set: __autoFn("set port", 1),
     });
     // pathname
     Object.defineProperty(location, "pathname", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get pathname", 0),
+        get: __autoFn("get pathname", 0,function(){
+            return '/';
+        }),
         set: __autoFn("set pathname", 1),
     });
     // search
     Object.defineProperty(location, "search", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get search", 0),
+        get: __autoFn("get search", 0,function(){
+            return "";
+        }),
         set: __autoFn("set search", 1),
     });
     // hash
     Object.defineProperty(location, "hash", {
         configurable: false,
         enumerable: true,
-        get: __autoFn("get hash", 0),
+        get: __autoFn("get hash", 0 ,function(){
+            return '';
+        }),
         set: __autoFn("set hash", 1),
     });
     // assign
@@ -166,7 +186,7 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
         configurable: false,
         enumerable: true,
         writable: false,
-        value: __autoFn("toString", 0),
+        value: __autoFn("toString", 0, function () { return String(this.href); }),
     });
     // Symbol(Symbol.toPrimitive) (symbol)
     Object.defineProperty(location, Symbol.toPrimitive, {
@@ -182,3 +202,4 @@ Object.defineProperty(Location.prototype,Symbol.toStringTag,{value:"Location",co
 location.__proto__=Location.prototype;
 location=csvm.proxy(location,"location");
 csvm.memory.location=location;
+try { console.log("[LOC-INIT] type=" + (typeof location) + " mem=" + (typeof csvm.memory.location)); } catch (e) {}

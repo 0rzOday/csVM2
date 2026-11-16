@@ -30,6 +30,7 @@ function GetCode(){
     code += fs.readFileSync(`${__dirname}/HTMLTableCellElement.js`,"utf8") + "\r\n";
     code += fs.readFileSync(`${__dirname}/HTMLTitleElement.js`,"utf8") + "\r\n";
     code += fs.readFileSync(`${__dirname}/HTMLUListElement.js`,"utf8") + "\r\n";
+    code += fs.readFileSync(`${__dirname}/MiscElements.js`,"utf8") + "\r\n";
 
     code += fs.readFileSync(`${__dirname}/Document.js`,"utf8") + "\r\n";
     code += fs.readFileSync(`${__dirname}/HTMLDocument.js`,"utf8") + "\r\n";
