@@ -32,6 +32,7 @@
 #### -----2026/11/10，在自建阿里 WAF 测试站完成 2 次请求端到端验证：挑战页取当次 `renderData` + `acw_tc` → 框架算 `acw_sc__v2` → 带 `acw_tc + acw_sc__v2` 复请求，返回 `{"success":true}`；`acw_sc__v2` 前缀 `1234cf0d46-` 稳定，尾部随时间变化
 #### -----2026/11/10，当前工作区为调试配置：`proxy:true`、`runScripts:true`；正式回归前应按需改回 `false`
 #### -----2026/11/16，完成针对瑞数6的适配新增对HTMLADD的适配加入dda.cc,在瑞数调用`typeof document.all`的时候和浏览器返回一致
+#### -----2026/11/18，本纯代码实现dom的补环境框架的最后维护，优化了结构和日志功能，后续将不在维护此版本，将基于此版本加入jsdom来减少开发维护成本。RIP
 > 注：2026/11/08 的 Plugin / MimeType 运行时实现已在同日移除，相关进度条目保留为历史记录；当前代码不包含 `navigator.plugins` / `navigator.mimeTypes`。
 
 ### 文档
