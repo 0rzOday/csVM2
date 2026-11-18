@@ -1,0 +1,11 @@
+{
+  "name": "csvm-pure-dom",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "description": "纯代码补环境框架（vm2 + 手写 DOM，不依赖 jsdom/sdenv 等第三方 DOM 框架）",
+  "dependencies": {
+    "parse5": "^8.1.0",
+    "vm2": "3.9.19"
+  }
+}

@@ -1,0 +1,10 @@
+[0.88s] capture status: 412
+[0.90s] O len: 88 html len: 2868
+[1.17s] script: 200 234351 8WwVutQAyu6q.0515a6f.js
+[2.25s] framework P 次数=3，取最后一个 len=300 (1063ms)
+[8.89s] --- validate ---
+first goto status: 200
+  DOC {"t":2802,"status":200,"url":"https://www.fangdi.com.cn/"}
+title: "网上房地产" url: https://www.fangdi.com.cn/
+jar: UA1L1zGonajvO=60mvuDrYlv...(88) | enable_UA1L1zGonajv=true...(4) | JSESSIONID=EB9F62F0C2...(32) | e5c777bf-df51-4240-90a0-c7ba04a4b424=WyI0MDU5OD...(19) | UA1L1zGonajvP=0xjpSmtkUL...(300)
+[8.90s] ✅ 200 通过
