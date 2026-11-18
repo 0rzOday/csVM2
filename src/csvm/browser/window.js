@@ -373,29 +373,92 @@ Window.prototype.__proto__ = WindowProperties.prototype;
 //   window[name] / name in window → 文档树里 id 或 name 匹配的 HTML 元素。
 // 挑战自检会用「创建 form → 设 id → append → window[id]」判断环境是否被篡改。
 try {
+    // 索引：id/name → element。按 csvm.memory.domRevision 失效（DOM 改动会 +1）。
+    function __namedBuild(doc) {
+        var byId = Object.create(null), byName = Object.create(null);
+        var all = null;
+        try { all = doc.getElementsByTagName ? doc.getElementsByTagName("*") : null; } catch (e) {}
+        if (all) {
+            for (var i = 0; i < all.length; i++) {
+                var el = all[i];
+                if (!el) continue;
+                var rec = csvm.memory.domStore ? csvm.memory.domStore.get(el) : null;
+                var id = "", nm = "", tag = "";
+                if (rec && rec.data) {
+                    id = rec.data.id == null ? "" : String(rec.data.id);
+                    nm = rec.data.name == null ? "" : String(rec.data.name);
+                    tag = String(rec.tag || "").toUpperCase();
+                } else {
+                    // 兜底：非 DOM 记录对象（带属性的普通对象），只读一次，调用方已抑制日志
+                    try {
+                        id = el.id || "";
+                        nm = el.getAttribute ? (el.getAttribute("name") || "") : "";
+                        tag = String(el.tagName || "").toUpperCase();
+                    } catch (e2) {}
+                }
+                if (id && !(id in byId)) byId[id] = el;
+                // name 只在 img/form/iframe/embed/object 上参与窗口命名访问
+                if (nm && !(nm in byName) &&
+                    (tag === "IMG" || tag === "FORM" || tag === "IFRAME" || tag === "EMBED" || tag === "OBJECT")) {
+                    byName[nm] = el;
+                }
+            }
+        }
+        return { v: csvm.memory.domRevision || 0, byId: byId, byName: byName };
+    }
+    function __namedInDoc(el, doc) {
+        try {
+            if (!doc) return false;
+            var cur = el, guard = 0;
+            while (cur && guard++ < 10000) {
+                if (cur === doc) return true;
+                var r = csvm.memory.domStore ? csvm.memory.domStore.get(cur) : null;
+                if (!r || !r.parent) return false;
+                cur = r.parent;
+            }
+            return false;
+        } catch (e) { return true; }
+    }
+    function __namedValid(el, name, doc) {
+        try {
+            // 必须仍在文档里（移除后缓存不能命中）
+            if (!__namedInDoc(el, doc)) return false;
+            var rec = csvm.memory.domStore ? csvm.memory.domStore.get(el) : null;
+            if (rec && rec.data) {
+                if (String(rec.data.id || "") === name) return true;
+                if (String(rec.data.name || "") === name) {
+                    var tag = String(rec.tag || "").toUpperCase();
+                    return tag === "IMG" || tag === "FORM" || tag === "IFRAME" || tag === "EMBED" || tag === "OBJECT";
+                }
+                return false;
+            }
+            if (String(el.id || "") === name) return true;
+            if (el.getAttribute && String(el.getAttribute("name") || "") === name) return true;
+            return false;
+        } catch (e) { return false; }
+    }
     csvm.memory.windowNamedGet = function (name) {
+        // 解析器内部的 DOM 调用属于框架自身，不产生代理日志
+        var __prevSuppress = csvm.memory.suppressLog;
+        csvm.memory.suppressLog = true;
         try {
             if (typeof name !== "string" || !name) return undefined;
             var doc = (typeof document !== "undefined" && document) ? document : null;
             if (!doc) return undefined;
-            var el = null;
-            try { el = doc.getElementById(name); } catch (e1) {}
-            if (el) return el;
-            // name 只在 img/form/iframe/embed/object 上参与窗口命名访问
-            try {
-                var all = doc.getElementsByTagName ? doc.getElementsByTagName("*") : null;
-                if (all) {
-                    for (var i = 0; i < all.length; i++) {
-                        var e = all[i];
-                        if (!e || !e.getAttribute) continue;
-                        if (e.getAttribute("name") === name) {
-                            var tag = String(e.tagName || "").toUpperCase();
-                            if (tag === "IMG" || tag === "FORM" || tag === "IFRAME" || tag === "EMBED" || tag === "OBJECT") return e;
-                        }
-                    }
-                }
-            } catch (e2) {}
-            // 诊断：窗口命名访问未命中时，把当前文档里的 id/name 全部打出来
+            var c = csvm.memory.__namedCache;
+            var v = csvm.memory.domRevision || 0;
+            if (!c || c.v !== v) {
+                c = __namedBuild(doc);
+                csvm.memory.__namedCache = c;
+            }
+            var el = c.byId[name] || c.byName[name];
+            if (el && __namedValid(el, name, doc)) return el;
+            // 命中失效（改名/移除）：重建一次
+            c = __namedBuild(doc);
+            csvm.memory.__namedCache = c;
+            el = c.byId[name] || c.byName[name];
+            if (el && __namedValid(el, name, doc)) return el;
+            // 诊断：未命中时打印当前文档 id/name（默认关）
             try {
                 if (typeof __CSVM_NAMED_TRACE !== "undefined" && __CSVM_NAMED_TRACE) {
                     var list2 = doc.getElementsByTagName ? doc.getElementsByTagName("*") : [], desc = [];
@@ -408,10 +471,11 @@ try {
             } catch (e3) {}
             return undefined;
         } catch (e) { return undefined; }
+        finally { csvm.memory.suppressLog = __prevSuppress; }
     };
 } catch (e) {}
 
-// 调试代理（csvm.memory.config.proxy 为 false 时原样返回）
+// 调试代理（csvm.memory.config.useProxy 为 false 时原样返回）
 window = csvm.proxy(window, "window");
 Window = csvm.proxy(Window, "Window");
 

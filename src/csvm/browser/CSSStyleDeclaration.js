@@ -66,7 +66,7 @@ function __makeStyleDeclaration(el) {
         lastText = text;
         if (!el) return;
         try {
-            var d = csvm.memory.Dom && csvm.memory.Dom.get(el);
+            var d = csvm.memory.domStore && csvm.memory.domStore.get(el);
             if (d && d.data) {
                 if (text) d.data.style = text; else delete d.data.style;
             }
@@ -174,7 +174,7 @@ function __makeStyleDeclaration(el) {
     // 元素上已有 style 属性时初始化
     if (el) {
         try {
-            var d0 = csvm.memory.Dom && csvm.memory.Dom.get(el);
+            var d0 = csvm.memory.domStore && csvm.memory.domStore.get(el);
             if (d0 && d0.data && d0.data.style) parseText(d0.data.style);
         } catch (e) {}
     }

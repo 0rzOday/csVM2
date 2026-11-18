@@ -69,4 +69,4 @@ document.__proto__=HTMLDocument.prototype;
 })();
 /* #endregion AUTO:document */
 document=csvm.proxy(document,"document");
-csvm.memory.Dom.set(document, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] });
+csvm.memory.domStore.set(document, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] });

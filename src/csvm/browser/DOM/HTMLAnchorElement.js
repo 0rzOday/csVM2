@@ -51,7 +51,7 @@ function __anchorParse(value, base) {
     return __anchorAbsolute(b.origin + b.pathname.replace(/[^/]*$/, "") + value);
 }
 function __anchorData(self) {
-    var d = csvm.memory.Dom.get(self);
+    var d = csvm.memory.domStore.get(self);
     if (!d) return {};
     if (!d.data) d.data = {};
     return d.data;

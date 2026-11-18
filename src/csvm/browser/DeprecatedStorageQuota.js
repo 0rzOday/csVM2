@@ -98,18 +98,6 @@ try { Object.defineProperty(DeprecatedStorageQuotaProto.requestQuota, "length", 
 
 // 原型是普通对象，没有自有 constructor，instance.constructor 会继承 Object，和真机一致
 var __dsqInst = Object.create(DeprecatedStorageQuotaProto);
-// 诊断：记录挑战对这个对象的属性/方法访问
-try {
-    if (typeof __CSVM_DSQ_PROXY !== "undefined" && __CSVM_DSQ_PROXY) {
-        __dsqInst = new Proxy(__dsqInst, {
-            get: function (t, k, r) {
-                var v = Reflect.get(t, k, r);
-                try { console.log("[DSQ-GET] key=" + String(k) + " val=" + (typeof v) + ":" + String(v).slice(0, 60)); } catch (e) {}
-                return v;
-            }
-        });
-    }
-} catch (e) {}
 csvm.memory.webkitStorageQuota = __dsqInst;
 
 // navigator.js 里这两个 getter 是空壳（configurable:true），这里覆盖成从内存读同一个实例

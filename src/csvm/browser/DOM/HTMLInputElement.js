@@ -11,7 +11,7 @@ HTMLInputElement.prototype.__proto__=HTMLElement.prototype;
 // ---------------------------------------------------------------------------
 (function () {
     function D(self) {
-        var d = csvm.memory.Dom.get(self);
+        var d = csvm.memory.domStore.get(self);
         if (!d) return null;
         if (!d.data) d.data = {};
         return d;
@@ -38,7 +38,7 @@ HTMLInputElement.prototype.__proto__=HTMLElement.prototype;
     }
 
     define("type", function () { return (str(this, "type", "text") || "text").toLowerCase(); }, function (v) { var d = D(this); if (d) d.data.type = String(v).toLowerCase(); });
-    define("name", function () { return str(this, "name"); }, setStr2("name"));
+    define("name", function () { return str(this, "name"); }, function (v) { var d = D(this); if (d) { d.data.name = String(v); try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {} } });
     define("value", function () { return str(this, "value"); }, setStr2("value"));
     define("defaultValue", function () { return str(this, "value"); }, setStr2("value"));
     define("placeholder", function () { return str(this, "placeholder"); }, setStr2("placeholder"));
@@ -76,7 +76,7 @@ HTMLInputElement.prototype.__proto__=HTMLElement.prototype;
     define("form", function () {
         var n = this;
         for (var i = 0; i < 12 && n; i++) {
-            var d = csvm.memory.Dom.get(n);
+            var d = csvm.memory.domStore.get(n);
             if (d && d.tag === "form") return n;
             n = n.parentNode;
         }

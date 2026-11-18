@@ -49,6 +49,8 @@ function __toMutationRecord(r) {
 
 // DOM 改动后由 Node/Element 调用：把记录分发给匹配的 observer，微任务里触发回调
 csvm.moNotify = function (target, record) {
+    // 所有通过 moNotify 通知的改动（append/remove/setAttribute/style…）都算一次 DOM 变更
+    try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {}
     record = __toMutationRecord(record);
     var list = csvm.memory.mo;
     if (!list || !list.length) return;
@@ -59,11 +61,11 @@ csvm.moNotify = function (target, record) {
         for (var j = 0; j < mo._targets.length; j++) {
             var t = mo._targets[j], opts = t.options || {};
             if (t.target === target) { matched = true; break; }
-            if (opts.subtree && target && csvm.memory.Dom) {
-                var p = csvm.memory.Dom.get(target);
+            if (opts.subtree && target && csvm.memory.domStore) {
+                var p = csvm.memory.domStore.get(target);
                 while (p && p.parent) {
                     if (p.parent === t.target) { matched = true; break; }
-                    p = csvm.memory.Dom.get(p.parent);
+                    p = csvm.memory.domStore.get(p.parent);
                 }
                 if (matched) break;
             }

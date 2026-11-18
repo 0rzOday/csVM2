@@ -9,7 +9,7 @@
         return C;
     }
     function D(self) {
-        var d = csvm.memory.Dom.get(self);
+        var d = csvm.memory.domStore.get(self);
         if (!d) return null;
         if (!d.data) d.data = {};
         return d;
@@ -34,7 +34,7 @@
     function formOf(self) {
         var n = self;
         for (var i = 0; i < 12 && n; i++) {
-            var d = csvm.memory.Dom.get(n);
+            var d = csvm.memory.domStore.get(n);
             if (d && d.tag === "form") return n;
             n = n.parentNode;
         }
@@ -163,18 +163,18 @@
     });
     // template.innerHTML 进 content 片段，而不是元素本身
     defineOn(HTMLTemplateElement, "innerHTML", function () {
-        var d = csvm.memory.Dom.get(this.content);
+        var d = csvm.memory.domStore.get(this.content);
         var out = [];
         if (d) for (var i = 0; i < d.childNodes.length; i++) serializeNodeInto(d.childNodes[i], out);
         return out.join("");
     }, function (v) {
         var frag = this.content;
-        var d = csvm.memory.Dom.get(frag);
+        var d = csvm.memory.domStore.get(frag);
         if (!d) return;
         d.childNodes = [];
         var nodes = htmlParse(v === null ? "" : String(v));
         for (var i = 0; i < nodes.length; i++) {
-            var nd = csvm.memory.Dom.get(nodes[i]);
+            var nd = csvm.memory.domStore.get(nodes[i]);
             if (nd) nd.parent = frag;
             d.childNodes.push(nodes[i]);
         }

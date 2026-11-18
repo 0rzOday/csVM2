@@ -9,14 +9,14 @@ Object.defineProperty(HTMLFormElement.prototype, "action", {
     configurable: true,
     enumerable: true,
     get: csvm.safefunction(function () {
-        var d = csvm.memory.Dom.get(this);
+        var d = csvm.memory.domStore.get(this);
         var raw = d && d.data ? d.data.action : undefined;
         var base = __anchorBase();
         if (raw === undefined || raw === null || raw === "") raw = base;
         return __anchorParse(String(raw), base).href;
     }, "get action"),
     set: csvm.safefunction(function (value) {
-        var d = csvm.memory.Dom.get(this);
+        var d = csvm.memory.domStore.get(this);
         if (!d) return;
         d.data = d.data || {};
         d.data.action = __anchorParse(String(value), __anchorBase()).href;
@@ -28,14 +28,15 @@ if (!Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, "name")) {
     Object.defineProperty(HTMLFormElement.prototype, "name", {
         configurable: true, enumerable: true,
         get: csvm.safefunction(function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return (d && d.data && d.data.name != null) ? String(d.data.name) : "";
         }, "get name"),
         set: csvm.safefunction(function (v) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             d.data = d.data || {};
             d.data.name = String(v);
+            try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {}
         }, "set name"),
     });
 }
@@ -48,7 +49,7 @@ if (!Object.getOwnPropertyDescriptor(HTMLFormElement.prototype, "name")) {
 // form.action / form.textContent / form.id 返回这些 input（而不是原生值）。
 // 返回原生值 = 环境被判定为伪造。
 csvm.mirrorNamedForm = function (form) {
-    var d = csvm.memory.Dom.get(form);
+    var d = csvm.memory.domStore.get(form);
     if (!d || d.tag !== "form") return;
     var all = [];
     try { all = csvm.queryAll(form, "input, select, textarea, button, object, output, fieldset"); } catch (e) { return; }
@@ -61,7 +62,7 @@ csvm.mirrorNamedForm = function (form) {
     var seen = Object.create(null);
     for (var i = 0; i < all.length; i++) {
         var el = all[i];
-        var ed = csvm.memory.Dom.get(el);
+        var ed = csvm.memory.domStore.get(el);
         if (!ed) continue;
         var names = [];
         if (ed.data && ed.data.name != null && ed.data.name !== "") names.push(String(ed.data.name));
@@ -125,7 +126,7 @@ Object.defineProperty(HTMLFormElement.prototype, "length", {
             for (var i = 0; i < els.length; i++) {
                 var el = els[i];
                 if (!el) continue;
-                var d = csvm.memory.Dom.get(el);
+                var d = csvm.memory.domStore.get(el);
                 var tag = d && String(d.tag).toLowerCase();
                 if (tag === "input" && typeof csvm.inputValidity === "function") {
                     if (!csvm.inputValidity(el).valid) ok = false;
@@ -141,7 +142,7 @@ Object.defineProperty(HTMLFormElement.prototype, "length", {
 
 // 真机 form 的反射属性（之前缺失，挑战自检会读）
 (function () {
-    function D(self) { var d = csvm.memory.Dom.get(self); if (!d) return null; if (!d.data) d.data = {}; return d; }
+    function D(self) { var d = csvm.memory.domStore.get(self); if (!d) return null; if (!d.data) d.data = {}; return d; }
     function has(self, k) { var d = D(self); return !!(d && Object.prototype.hasOwnProperty.call(d.data, k)); }
     function str(self, k, def) { var d = D(self); var v = d && d.data[k]; return v === undefined || v === null ? (def === undefined ? "" : def) : String(v); }
     function define(k, getter, setter, name) {

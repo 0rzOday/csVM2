@@ -63,7 +63,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         configurable: true,
         enumerable: true,
         get: __autoFn("get length", 0, function () {
-            var s = csvm.memory.Storage.get(this);
+            var s = csvm.memory.storageRecords.get(this);
             return s ? s.items.size : 0;
         }),
         set: undefined,
@@ -74,7 +74,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         enumerable: true,
         writable: true,
         value: __autoFn("clear", 0, function () {
-            var s = csvm.memory.Storage.get(this);
+            var s = csvm.memory.storageRecords.get(this);
             if (s) s.items.clear();
         }),
     });
@@ -84,7 +84,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         enumerable: true,
         writable: true,
         value: __autoFn("getItem", 1,function(key){
-            var thisStorage=csvm.memory.Storage.get(this);
+            var thisStorage=csvm.memory.storageRecords.get(this);
             var k = String(key);
             return thisStorage.items.has(k) ? thisStorage.items.get(k) : null;
         }),
@@ -95,7 +95,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         enumerable: true,
         writable: true,
         value: __autoFn("key", 1, function (index) {
-            var thisStorage = csvm.memory.Storage.get(this);
+            var thisStorage = csvm.memory.storageRecords.get(this);
             if (!thisStorage) return null;
             var keys = Array.from(thisStorage.items.keys());
             var i = Number(index) | 0;
@@ -108,7 +108,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         enumerable: true,
         writable: true,
         value: __autoFn("removeItem", 1,function(key){
-            var thisStorage=csvm.memory.Storage.get(this);
+            var thisStorage=csvm.memory.storageRecords.get(this);
             thisStorage.items.delete(String(key));
         }),
     });
@@ -118,7 +118,7 @@ Object.defineProperty(Storage.prototype,Symbol.toStringTag,{value:"Storage",conf
         enumerable: true,
         writable: true,
         value: __autoFn("setItem", 2,function(key,value){
-            var thisStorage=csvm.memory.Storage.get(this);
+            var thisStorage=csvm.memory.storageRecords.get(this);
             if (!thisStorage) return;
             thisStorage.items.set(String(key), String(value));
         }),
@@ -190,7 +190,7 @@ var __ss = __makeStorage();
 localStorage = csvm.proxy ? csvm.proxy(__ls.proxy, "localStorage") : __ls.proxy;
 sessionStorage = csvm.proxy ? csvm.proxy(__ss.proxy, "sessionStorage") : __ss.proxy;
 // 方法里的 this 可能是内层或外层代理，两个都登记
-csvm.memory.Storage.set(__ls.proxy, __ls.store);
-csvm.memory.Storage.set(localStorage, __ls.store);
-csvm.memory.Storage.set(__ss.proxy, __ss.store);
-csvm.memory.Storage.set(sessionStorage, __ss.store);
+csvm.memory.storageRecords.set(__ls.proxy, __ls.store);
+csvm.memory.storageRecords.set(localStorage, __ls.store);
+csvm.memory.storageRecords.set(__ss.proxy, __ss.store);
+csvm.memory.storageRecords.set(sessionStorage, __ss.store);

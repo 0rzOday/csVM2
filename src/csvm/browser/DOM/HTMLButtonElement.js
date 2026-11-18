@@ -9,7 +9,7 @@ HTMLButtonElement.prototype.__proto__=HTMLElement.prototype;
 // ---------------------------------------------------------------------------
 (function () {
     function D(self) {
-        var d = csvm.memory.Dom.get(self);
+        var d = csvm.memory.domStore.get(self);
         if (!d) return null;
         if (!d.data) d.data = {};
         return d;
@@ -25,13 +25,13 @@ HTMLButtonElement.prototype.__proto__=HTMLElement.prototype;
     }
     define("value", function () { return str(this, "value"); }, function (v) { var d = D(this); if (d) d.data.value = String(v); });
     define("type", function () { return (str(this, "type", "submit") || "submit").toLowerCase(); }, function (v) { var d = D(this); if (d) d.data.type = String(v).toLowerCase(); });
-    define("name", function () { return str(this, "name"); }, function (v) { var d = D(this); if (d) d.data.name = String(v); });
+    define("name", function () { return str(this, "name"); }, function (v) { var d = D(this); if (d) { d.data.name = String(v); try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {} } });
     define("disabled", function () { return has(this, "disabled"); }, function (v) { var d = D(this); if (!d) return; if (v) d.data.disabled = ""; else delete d.data.disabled; });
     define("autofocus", function () { return has(this, "autofocus"); }, function (v) { var d = D(this); if (!d) return; if (v) d.data.autofocus = ""; else delete d.data.autofocus; });
     define("form", function () {
         var n = this;
         for (var i = 0; i < 12 && n; i++) {
-            var d = csvm.memory.Dom.get(n);
+            var d = csvm.memory.domStore.get(n);
             if (d && d.tag === "form") return n;
             n = n.parentNode;
         }

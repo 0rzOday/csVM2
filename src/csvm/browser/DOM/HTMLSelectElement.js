@@ -9,7 +9,7 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
 // ---------------------------------------------------------------------------
 (function () {
     function D(self) {
-        var d = csvm.memory.Dom.get(self);
+        var d = csvm.memory.domStore.get(self);
         if (!d) return null;
         if (!d.data) d.data = {};
         return d;
@@ -31,7 +31,7 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
     define("options", function () { return csvm.makeHTMLCollection(optionsOf(this)); });
     define("length", function () { return optionsOf(this).length; }, function (v) { void v; });
     define("multiple", function () { return has(this, "multiple"); }, function (v) { var d = D(this); if (!d) return; if (v) d.data.multiple = ""; else delete d.data.multiple; });
-    define("name", function () { return str(this, "name"); }, function (v) { var d = D(this); if (d) d.data.name = String(v); });
+    define("name", function () { return str(this, "name"); }, function (v) { var d = D(this); if (d) { d.data.name = String(v); try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {} } });
     define("size", function () { var d = D(this); var n = parseInt(d && d.data.size, 10); return isNaN(n) ? 0 : n; }, function (v) { var d = D(this); if (d) d.data.size = String(Number(v) | 0); });
     define("type", function () { return has(this, "multiple") ? "select-multiple" : "select-one"; });
     define("disabled", function () { return has(this, "disabled"); }, function (v) { var d = D(this); if (!d) return; if (v) d.data.disabled = ""; else delete d.data.disabled; });
@@ -39,12 +39,12 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
     define("autofocus", function () { return has(this, "autofocus"); }, function (v) { var d = D(this); if (!d) return; if (v) d.data.autofocus = ""; else delete d.data.autofocus; });
     define("selectedIndex", function () {
         var opts = optionsOf(this);
-        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.Dom.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) return i; }
+        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.domStore.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) return i; }
         return opts.length ? 0 : -1;
     }, function (v) {
         var opts = optionsOf(this), idx = Number(v) | 0;
         for (var i = 0; i < opts.length; i++) {
-            var d = csvm.memory.Dom.get(opts[i]);
+            var d = csvm.memory.domStore.get(opts[i]);
             if (!d) continue;
             if (!d.data) d.data = {};
             if (i === idx) d.data.selected = ""; else delete d.data.selected;
@@ -54,14 +54,14 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
         var opts = optionsOf(this);
         if (!opts.length) return "";
         var idx = 0;
-        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.Dom.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) { idx = i; break; } }
-        var od = csvm.memory.Dom.get(opts[idx]);
+        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.domStore.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) { idx = i; break; } }
+        var od = csvm.memory.domStore.get(opts[idx]);
         var v = od && od.data ? od.data.value : undefined;
         return v === undefined || v === null ? "" : String(v);
     }, function (v) {
         var opts = optionsOf(this);
         for (var i = 0; i < opts.length; i++) {
-            var d = csvm.memory.Dom.get(opts[i]);
+            var d = csvm.memory.domStore.get(opts[i]);
             if (!d) continue;
             if (!d.data) d.data = {};
             if (String(d.data.value === undefined ? "" : d.data.value) === String(v)) d.data.selected = ""; else delete d.data.selected;
@@ -69,13 +69,13 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
     });
     define("selectedOptions", function () {
         var opts = optionsOf(this), sel = [];
-        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.Dom.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) sel.push(opts[i]); }
+        for (var i = 0; i < opts.length; i++) { var d = csvm.memory.domStore.get(opts[i]); if (d && d.data && Object.prototype.hasOwnProperty.call(d.data, "selected")) sel.push(opts[i]); }
         return csvm.makeHTMLCollection(sel);
     });
     define("form", function () {
         var n = this;
         for (var i = 0; i < 12 && n; i++) {
-            var d = csvm.memory.Dom.get(n);
+            var d = csvm.memory.domStore.get(n);
             if (d && d.tag === "form") return n;
             n = n.parentNode;
         }
@@ -95,7 +95,7 @@ HTMLSelectElement.prototype.__proto__=HTMLElement.prototype;
     method("item", function (i) { var o = optionsOf(this); i = Number(i) | 0; return i >= 0 && i < o.length ? o[i] : null; });
     method("namedItem", function (n) {
         var o = optionsOf(this);
-        for (var i = 0; i < o.length; i++) { var d = csvm.memory.Dom.get(o[i]); if (d && d.data && (d.data.id === n || d.data.name === n)) return o[i]; }
+        for (var i = 0; i < o.length; i++) { var d = csvm.memory.domStore.get(o[i]); if (d && d.data && (d.data.id === n || d.data.name === n)) return o[i]; }
         return null;
     });
     method("add", function (el) { try { if (this.appendChild) this.appendChild(el); } catch (e) {} });

@@ -76,14 +76,14 @@ Object.defineProperty(HTMLMetaElement.prototype,Symbol.toStringTag,{value:"HTMLM
         configurable: true,
         enumerable: true,
         get: __autoFn("get content", 0 ,function (){
-            var thisNode=csvm.memory.Dom.get(this);
+            var thisNode=csvm.memory.domStore.get(this);
             if (thisNode){
                 return thisNode["data"]["content"];
             }
             return "";
         }),
         set: __autoFn("set content", 1 ,function (value){
-            var thisNode=csvm.memory.Dom.get(this);
+            var thisNode=csvm.memory.domStore.get(this);
             if (thisNode){
                 thisNode["data"]["content"]=value;
             }

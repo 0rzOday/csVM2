@@ -67,7 +67,7 @@ var __VOID_TAGS = {
     input: 1, link: 1, meta: 1, param: 1, source: 1, track: 1, wbr: 1,
 };
 function serializeNodeInto(node, out) {
-    var d = csvm.memory.Dom.get(node);
+    var d = csvm.memory.domStore.get(node);
     if (!d) return;
     var type = d.nodeType;
     if (type === 1) {
@@ -97,7 +97,7 @@ function serializeNodeInto(node, out) {
     }
 }
 function serializeChildren(node) {
-    var d = csvm.memory.Dom.get(node);
+    var d = csvm.memory.domStore.get(node);
     var out = [];
     if (d) {
         for (var i = 0; i < d.childNodes.length; i++) serializeNodeInto(d.childNodes[i], out);
@@ -112,16 +112,16 @@ function serializeSelf(node) {
 
 // ---------- 基础选择器引擎（querySelector / matches / children） ----------
 function __elChildren(el) {
-    var d = csvm.memory.Dom.get(el), out = [];
+    var d = csvm.memory.domStore.get(el), out = [];
     if (!d) return out;
     for (var i = 0; i < d.childNodes.length; i++) {
-        var cd = csvm.memory.Dom.get(d.childNodes[i]);
+        var cd = csvm.memory.domStore.get(d.childNodes[i]);
         if (cd && cd.nodeType === 1) out.push(d.childNodes[i]);
     }
     return out;
 }
 function __elattr(el, name) {
-    var d = csvm.memory.Dom.get(el);
+    var d = csvm.memory.domStore.get(el);
     if (!d || !d.data) return null;
     var v = d.data[String(name).toLowerCase()];
     return v === undefined ? null : String(v);
@@ -132,13 +132,13 @@ function __classOf(el) {
 }
 // 单个简单选择器：tag / #id / .cls / [attr] / [attr="v"] / tag.cls#id / :pseudo
 function __childIndex(el) {
-    var d = csvm.memory.Dom.get(el);
+    var d = csvm.memory.domStore.get(el);
     if (!d || !d.parent) return -1;
-    var pd = csvm.memory.Dom.get(d.parent);
+    var pd = csvm.memory.domStore.get(d.parent);
     if (!pd) return -1;
     var n = 0;
     for (var i = 0; i < pd.childNodes.length; i++) {
-        var cd = csvm.memory.Dom.get(pd.childNodes[i]);
+        var cd = csvm.memory.domStore.get(pd.childNodes[i]);
         if (cd && cd.nodeType === 1) { n++; if (pd.childNodes[i] === el) return n; }
     }
     return -1;
@@ -158,7 +158,7 @@ function __nthMatch(idx, expr) {
     return idx === parseInt(s, 10);
 }
 function __matchSimple(el, sel) {
-    var d = csvm.memory.Dom.get(el);
+    var d = csvm.memory.domStore.get(el);
     if (!d || d.nodeType !== 1) return false;
     var m = /^([a-zA-Z][\w-]*|\*)?(.*)$/.exec(sel);
     if (!m) return false;
@@ -189,8 +189,8 @@ function __matchSimple(el, sel) {
         else if (name === "nth-child") { if (!__nthMatch(__childIndex(el), arg)) return false; }
         else if (name === "first-child") { if (__childIndex(el) !== 1) return false; }
         else if (name === "last-child") {
-            var pd = d.parent ? csvm.memory.Dom.get(d.parent) : null;
-            var cnt = pd ? pd.childNodes.filter(function (c) { var cd = csvm.memory.Dom.get(c); return cd && cd.nodeType === 1; }).length : 0;
+            var pd = d.parent ? csvm.memory.domStore.get(d.parent) : null;
+            var cnt = pd ? pd.childNodes.filter(function (c) { var cd = csvm.memory.domStore.get(c); return cd && cd.nodeType === 1; }).length : 0;
             if (__childIndex(el) !== cnt) return false;
         }
         else if (name === "empty") {
@@ -200,10 +200,10 @@ function __matchSimple(el, sel) {
     return true;
 }
 function __walkElements(root, cb) {
-    var d = csvm.memory.Dom.get(root);
+    var d = csvm.memory.domStore.get(root);
     if (!d) return;
     for (var i = 0; i < d.childNodes.length; i++) {
-        var child = d.childNodes[i], cd = csvm.memory.Dom.get(child);
+        var child = d.childNodes[i], cd = csvm.memory.domStore.get(child);
         if (!cd) continue;
         if (cd.nodeType === 1) { if (cb(child) === true) return true; }
         if (__walkElements(child, cb) === true) return true;
@@ -234,14 +234,14 @@ function __parseSelGroup(g) {
 function __matchTokens(el, tokens, idx) {
     if (!__matchSimple(el, tokens[idx].sel)) return false;
     if (idx === 0) return true;
-    var d = csvm.memory.Dom.get(el);
+    var d = csvm.memory.domStore.get(el);
     var p = d && d.parent;
     if (tokens[idx].comb === ">") {
-        var pd = p ? csvm.memory.Dom.get(p) : null;
+        var pd = p ? csvm.memory.domStore.get(p) : null;
         return !!(pd && pd.nodeType === 1 && __matchTokens(p, tokens, idx - 1));
     }
     while (p) {
-        var pd2 = csvm.memory.Dom.get(p);
+        var pd2 = csvm.memory.domStore.get(p);
         if (!pd2) break;
         if (pd2.nodeType === 1 && __matchTokens(p, tokens, idx - 1)) return true;
         p = pd2.parent;
@@ -251,10 +251,10 @@ function __matchTokens(el, tokens, idx) {
 function __matchComplex(el, parts, idx) {
     if (!__matchSimple(el, parts[idx])) return false;
     if (idx === 0) return true;
-    var d = csvm.memory.Dom.get(el);
+    var d = csvm.memory.domStore.get(el);
     var p = d && d.parent;
     while (p) {
-        var pd = csvm.memory.Dom.get(p);
+        var pd = csvm.memory.domStore.get(p);
         if (!pd) break;
         if (pd.nodeType === 1 && __matchComplex(p, parts, idx - 1)) return true;
         p = pd.parent;
@@ -303,19 +303,19 @@ csvm.matchSelector = __matchSimple;
 
 // ---------- append / prepend / replaceChildren / before / after ----------
 function __nodeFromArg(arg) {
-    if (arg && typeof arg === "object" && csvm.memory.Dom.get(arg)) return arg;
+    if (arg && typeof arg === "object" && csvm.memory.domStore.get(arg)) return arg;
     return csvm.DomGenerator("#text", { text: arg == null ? "" : String(arg) }, null);
 }
 function __insertInto(parent, nodes, ref) {
-    var pd = csvm.memory.Dom.get(parent);
+    var pd = csvm.memory.domStore.get(parent);
     if (!pd) return;
     var added = [];
     for (var i = 0; i < nodes.length; i++) {
         var n = __nodeFromArg(nodes[i]);
-        var nd = csvm.memory.Dom.get(n);
+        var nd = csvm.memory.domStore.get(n);
         if (!nd) continue;
         if (nd.parent) {
-            var op = csvm.memory.Dom.get(nd.parent);
+            var op = csvm.memory.domStore.get(nd.parent);
             if (op) { var j = op.childNodes.indexOf(n); if (j !== -1) op.childNodes.splice(j, 1); }
         }
         nd.parent = parent;
@@ -331,10 +331,10 @@ function __insertInto(parent, nodes, ref) {
     try { if (csvm.moNotify && added.length) csvm.moNotify(parent, { type: "childList", target: parent, addedNodes: added, removedNodes: [], attributeName: null }); } catch (e) {}
 }
 function __replaceChildren(parent, nodes) {
-    var pd = csvm.memory.Dom.get(parent);
+    var pd = csvm.memory.domStore.get(parent);
     if (!pd) return;
     var removed = pd.childNodes.slice();
-    for (var i = 0; i < pd.childNodes.length; i++) { var cd = csvm.memory.Dom.get(pd.childNodes[i]); if (cd) cd.parent = null; }
+    for (var i = 0; i < pd.childNodes.length; i++) { var cd = csvm.memory.domStore.get(pd.childNodes[i]); if (cd) cd.parent = null; }
     pd.childNodes.length = 0;
     __insertInto(parent, nodes, null);
     try { if (csvm.moNotify) csvm.moNotify(parent, { type: "childList", target: parent, addedNodes: pd.childNodes.slice(), removedNodes: removed, attributeName: null }); } catch (e) {}
@@ -389,8 +389,8 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
     function appendNode(node) {
         if (stack.length) {
             var parent = stack[stack.length - 1].node;
-            var pd = csvm.memory.Dom.get(parent);
-            var nd = csvm.memory.Dom.get(node);
+            var pd = csvm.memory.domStore.get(parent);
+            var nd = csvm.memory.domStore.get(node);
             if (pd && nd) { nd.parent = parent; pd.childNodes.push(node); return; }
         }
         out.push(node);
@@ -508,7 +508,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get namespaceURI", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || d.nodeType !== 1) return null;
             if (d.data && d.data.__ns !== undefined) return d.data.__ns;
             return "http://www.w3.org/1999/xhtml";
@@ -520,7 +520,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get prefix", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.data && d.data.__prefix !== undefined ? d.data.__prefix : null;
         }),
         set: undefined,
@@ -530,7 +530,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get localName", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d ? String(d.tag) : "";
         }),
         set: undefined,
@@ -540,7 +540,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get tagName", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || d.nodeType !== 1) return undefined;
             var tag = d.tag || "";
             // HTML 标签大写；SVG 这类保持原样（当前 page 里没有 SVG）
@@ -553,14 +553,15 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get id", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.data && d.data.id !== undefined ? String(d.data.id) : "";
         }),
         set: __autoFn("set id", 1, function (value) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             d.data = d.data || {};
             d.data.id = String(value);
+            try { if (csvm.markDomChanged) csvm.markDomChanged(); } catch (e) {}
         }),
     });
     // className
@@ -568,11 +569,11 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get className", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.data && d.data["class"] !== undefined ? String(d.data["class"]) : "";
         }),
         set: __autoFn("set className", 1, function (value) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             d.data = d.data || {};
             d.data["class"] = String(value);
@@ -604,7 +605,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         get: __autoFn("get attributes", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             var arr = [];
             if (d && d.data) {
                 var self = this;
@@ -627,7 +628,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             if (!csvm.memory.shadowRoots) csvm.memory.shadowRoots = new WeakMap();
             var r = csvm.memory.shadowRoots.get(this);
             if (!r) return null;
-            var mode = r.mode !== undefined ? r.mode : (csvm.memory.Dom.get(r) || {}).__mode;
+            var mode = r.mode !== undefined ? r.mode : (csvm.memory.domStore.get(r) || {}).__mode;
             return mode === "open" ? r : null;
         }),
         set: undefined,
@@ -654,7 +655,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             return serializeChildren(this);
         }),
         set: __autoFn("set innerHTML", 1, function (val) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[INNERHTML] <" + (d.tag || "?") + "> = " + String(val).slice(0, 120)); } catch (e) {}
 
@@ -665,14 +666,14 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             // 先切断旧直接子节点的 parent
             var __removed = d.childNodes.slice();
             for (var i = 0; i < d.childNodes.length; i++) {
-                var cd = csvm.memory.Dom.get(d.childNodes[i]);
+                var cd = csvm.memory.domStore.get(d.childNodes[i]);
                 if (cd) cd.parent = null;
             }
             d.childNodes.length = 0;
 
             // 再挂新节点
             for (var j = 0; j < result.length; j++) {
-                csvm.memory.Dom.get(result[j]).parent = this;
+                csvm.memory.domStore.get(result[j]).parent = this;
                 d.childNodes.push(result[j]);
             }
             try { if (csvm.moNotify) csvm.moNotify(this, { type: "childList", target: this, addedNodes: result, removedNodes: __removed, attributeName: null }); } catch (_e) {}
@@ -686,10 +687,10 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             return serializeSelf(this);
         }),
         set: __autoFn("set outerHTML", 1, function (val) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.parent) return;
             var parent = d.parent;
-            var pd = csvm.memory.Dom.get(parent);
+            var pd = csvm.memory.domStore.get(parent);
             if (!pd) return;
             var nodes = htmlParse(val === null ? "" : String(val));
             if (nodes === null) return;
@@ -698,7 +699,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             pd.childNodes.splice(idx, 1);
             d.parent = null;
             for (var i = 0; i < nodes.length; i++) {
-                var nd = csvm.memory.Dom.get(nodes[i]);
+                var nd = csvm.memory.domStore.get(nodes[i]);
                 if (nd) nd.parent = parent;
                 pd.childNodes.splice(idx + i, 0, nodes[i]);
             }
@@ -1166,14 +1167,14 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
     Object.defineProperty(Element.prototype, "previousElementSibling", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get previousElementSibling", 0, function () { var d = csvm.memory.Dom.get(this); if (!d || !d.parent) return null; var a = __elChildren(d.parent); var i = a.indexOf(this); return i > 0 ? a[i - 1] : null; }),
+        get: __autoFn("get previousElementSibling", 0, function () { var d = csvm.memory.domStore.get(this); if (!d || !d.parent) return null; var a = __elChildren(d.parent); var i = a.indexOf(this); return i > 0 ? a[i - 1] : null; }),
         set: undefined,
     });
     // nextElementSibling
     Object.defineProperty(Element.prototype, "nextElementSibling", {
         configurable: true,
         enumerable: true,
-        get: __autoFn("get nextElementSibling", 0, function () { var d = csvm.memory.Dom.get(this); if (!d || !d.parent) return null; var a = __elChildren(d.parent); var i = a.indexOf(this); return i !== -1 && i + 1 < a.length ? a[i + 1] : null; }),
+        get: __autoFn("get nextElementSibling", 0, function () { var d = csvm.memory.domStore.get(this); if (!d || !d.parent) return null; var a = __elChildren(d.parent); var i = a.indexOf(this); return i !== -1 && i + 1 < a.length ? a[i + 1] : null; }),
         set: undefined,
     });
     // after
@@ -1181,7 +1182,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("after", 0, function () { var d = csvm.memory.Dom.get(this); if (!d || !d.parent) return; __insertInto(d.parent, Array.prototype.slice.call(arguments), d.nextSibling || null); }),
+        value: __autoFn("after", 0, function () { var d = csvm.memory.domStore.get(this); if (!d || !d.parent) return; __insertInto(d.parent, Array.prototype.slice.call(arguments), d.nextSibling || null); }),
     });
     // animate
     Object.defineProperty(Element.prototype, "animate", {
@@ -1208,7 +1209,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             var exist = csvm.memory.shadowRoots.get(this);
             if (exist) throw new Error("NotSupportedError: Shadow root cannot be created on a host which already hosts a shadow tree.");
             var root = csvm.DomGenerator("#document-fragment", { mode: mode }, null);
-            var rd = csvm.memory.Dom.get(root);
+            var rd = csvm.memory.domStore.get(root);
             if (rd) { rd.host = this; rd.__mode = mode; }
             try { Object.defineProperty(root, "mode", { value: mode, enumerable: true, configurable: true }); } catch (e) {}
             try { Object.defineProperty(root, "host", { value: this, enumerable: true, configurable: true }); } catch (e) {}
@@ -1221,7 +1222,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("before", 0, function () { var d = csvm.memory.Dom.get(this); if (!d || !d.parent) return; __insertInto(d.parent, Array.prototype.slice.call(arguments), this); }),
+        value: __autoFn("before", 0, function () { var d = csvm.memory.domStore.get(this); if (!d || !d.parent) return; __insertInto(d.parent, Array.prototype.slice.call(arguments), this); }),
     });
     // checkVisibility
     Object.defineProperty(Element.prototype, "checkVisibility", {
@@ -1240,7 +1241,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             if (!tokens.length) return null;
             var e = this;
             while (e) {
-                var d = csvm.memory.Dom.get(e);
+                var d = csvm.memory.domStore.get(e);
                 if (d && d.nodeType === 1 && __matchTokens(e, tokens, tokens.length - 1)) return e;
                 e = d && d.parent;
             }
@@ -1267,7 +1268,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("getAttribute", 1, function (name) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.data) return null;
             var key = String(name).toLowerCase();
             try { if (csvm.memory.config && csvm.memory.config.moLog && key !== "style") { if (key === "webdriver" && globalThis.__adRecOn) { try { globalThis.__adRecOn(2000); } catch (e) {} } console.log("[GETATTR] <" + (d.tag || "?") + "> " + key + " ring=" + (globalThis.__adRingGet ? globalThis.__adRingGet() : "-")); } } catch (_e) {}
@@ -1289,7 +1290,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("getAttributeNames", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.data ? Object.keys(d.data) : [];
         }),
     });
@@ -1374,7 +1375,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
             var target = String(tagName).toLowerCase();
             var self = this;
             return csvm.makeLiveHTMLCollection(function () {
-                var domTree = csvm.memory.Dom;
+                var domTree = csvm.memory.domStore;
                 var out = [];
                 (function walk(node) {
                     var d = domTree.get(node);
@@ -1412,7 +1413,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("hasAttribute", 1, function (name) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[HASATTR] <" + (d && d.tag || "?") + "> " + String(name).toLowerCase()); } catch (_e) {}
             return !!(d && d.data && Object.prototype.hasOwnProperty.call(d.data, String(name).toLowerCase()));
         }),
@@ -1465,7 +1466,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("insertAdjacentText", 2, function (pos, text) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             var doc = (d && d.ownerDocument) || (typeof document !== "undefined" ? document : null);
             var node = (doc && doc.createTextNode) ? doc.createTextNode(String(text)) : null;
             if (node) __insertAdjacent(this, pos, node);
@@ -1490,7 +1491,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         configurable: true,
         enumerable: true,
         writable: true,
-        value: __autoFn("prepend", 0, function () { var d = csvm.memory.Dom.get(this); __insertInto(this, Array.prototype.slice.call(arguments), d && d.childNodes[0] ? d.childNodes[0] : null); }),
+        value: __autoFn("prepend", 0, function () { var d = csvm.memory.domStore.get(this); __insertInto(this, Array.prototype.slice.call(arguments), d && d.childNodes[0] ? d.childNodes[0] : null); }),
     });
     // querySelector
     Object.defineProperty(Element.prototype, "querySelector", {
@@ -1526,7 +1527,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("removeAttribute", 1, function (name) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             var lname = String(name).toLowerCase();
             if (d && d.data) delete d.data[lname];
             try { if (lname === "style" && csvm.styleAttrChanged) csvm.styleAttrChanged(this, ""); } catch (_e) {}
@@ -1616,7 +1617,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("setAttribute", 2, function (name, value) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             d.data = d.data || {};
             var lname = String(name).toLowerCase();
@@ -1674,7 +1675,7 @@ function htmlParse(s){    // 空串：浏览器结果是 0 个子节点，不能
         enumerable: true,
         writable: true,
         value: __autoFn("toggleAttribute", 1, function (name, force) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return false;
             d.data = d.data || {};
             var lname = String(name).toLowerCase();

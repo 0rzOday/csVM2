@@ -133,10 +133,10 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         enumerable: true,
         get: __autoFn("get documentElement", 0, function () {
             // 返回第一个nodeType为1也就是dom节点的node
-            var thisNode = csvm.memory.Dom.get(this);
+            var thisNode = csvm.memory.domStore.get(this);
             if (!thisNode) return null;
             for (var i = 0; i < thisNode["childNodes"]["length"]; i++) {
-                var cd = csvm.memory.Dom.get(thisNode.childNodes[i]);
+                var cd = csvm.memory.domStore.get(thisNode.childNodes[i]);
                 if (cd && cd.nodeType === 1) return __maybeWrapElement(thisNode.childNodes[i]);
             }
             return null;
@@ -186,8 +186,8 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         enumerable: true,
         get: __autoFn("get cookie", 0, function () {
             var out = [];
-            for (var name in csvm.memory.cookies) {
-                out.push(name + "=" + csvm.memory.cookies[name]);
+            for (var name in csvm.memory.cookieJar) {
+                out.push(name + "=" + csvm.memory.cookieJar[name]);
             }
             return out.join("; ");
         }),
@@ -219,13 +219,13 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                 }
             }
 
-            if (expired) delete csvm.memory.cookies[name];
-            else csvm.memory.cookies[name] = value;
+            if (expired) delete csvm.memory.cookieJar[name];
+            else csvm.memory.cookieJar[name] = value;
 
-            // 兼容旧代码：memory.cookie 保存当前 document.cookie 文本
+            // 兼容旧代码：memory.cookieHeader 保存当前 document.cookie 文本
             var out = [];
-            for (var k in csvm.memory.cookies) out.push(k + "=" + csvm.memory.cookies[k]);
-            csvm.memory.cookie = out.join("; ");
+            for (var k in csvm.memory.cookieJar) out.push(k + "=" + csvm.memory.cookieJar[k]);
+            csvm.memory.cookieHeader = out.join("; ");
 
             // [DIAG] 记录“写 P 那一刻”的状态，便于和真机同一时刻对比
             if (csvm.memory.config.pDump === true && name === "UA1L1zGonajvP") {
@@ -233,7 +233,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                     var __ts = globalThis.$_ts || {};
                     function __h(v){var s=String(v),h=0;for(var i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return h;}
                     var __st = {
-                        cookie: String(csvm.memory.cookie).slice(0, 400),
+                        cookie: String(csvm.memory.cookieHeader).slice(0, 400),
                         tsKeys: Object.keys(__ts).sort().join(','),
                         tsL: (function () {
                             try {
@@ -268,7 +268,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                     csvm.memory.__pDump = JSON.stringify({
                         docOwn: Object.getOwnPropertyNames(document),
                         refDesc: __ref ? { get: !!__ref.get, en: __ref.enumerable, cf: __ref.configurable } : null,
-                        cookie: csvm.memory.cookie,
+                        cookie: csvm.memory.cookieHeader,
                         allLen: (function () { try { return document.all.length; } catch (e) { return -1; } })(),
                         tsKeys: (function () { try { var t = globalThis.$_ts; return t ? Reflect.ownKeys(t).map(String) : null; } catch (e) { return String(e); } })(),
                         tsDump: (function () { try {
@@ -322,7 +322,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     });
     // 从 document 的节点树里找指定 tag 的元素（body / head 用）
     function __findElement(node, tag) {
-        var d = csvm.memory.Dom.get(node);
+        var d = csvm.memory.domStore.get(node);
         if (!d) return null;
         if (d.tag === tag) return node;
         for (var i = 0; i < d.childNodes.length; i++) {
@@ -336,7 +336,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         get: __autoFn("get body", 0, function () {
-            var root = csvm.memory.Dom.get(this);
+            var root = csvm.memory.domStore.get(this);
             if (!root) return null;
             for (var i = 0; i < root.childNodes.length; i++) {
                 var found = __findElement(root.childNodes[i], "body");
@@ -351,7 +351,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         configurable: true,
         enumerable: true,
         get: __autoFn("get head", 0, function () {
-            var root = csvm.memory.Dom.get(this);
+            var root = csvm.memory.domStore.get(this);
             if (!root) return null;
             for (var i = 0; i < root.childNodes.length; i++) {
                 var found = __findElement(root.childNodes[i], "head");
@@ -490,12 +490,12 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     function __allCollectElements(root) {
         const out = [];
         (function walk(node) {
-            const rec = csvm.memory.Dom.get(node);
+            const rec = csvm.memory.domStore.get(node);
             if (!rec) return;
             const kids = rec.childNodes || [];
             for (let i = 0; i < kids.length; i++) {
                 const k = kids[i];
-                const kr = csvm.memory.Dom.get(k);
+                const kr = csvm.memory.domStore.get(k);
                 if (kr && kr.nodeType === 1) out.push(k);
                 if (kr) walk(k);
             }
@@ -504,7 +504,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
     }
     function __allNamed(els, name) {
         for (let i = 0; i < els.length; i++) {
-            const r = csvm.memory.Dom.get(els[i]);
+            const r = csvm.memory.domStore.get(els[i]);
             if (r && r.data && (String(r.data.id) === name || String(r.data.name) === name)) return els[i];
         }
         return null;
@@ -562,7 +562,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                 const a = collect();
                 const keys = a.map(function (_, i) { return String(i); });
                 for (let i = 0; i < a.length; i++) {
-                    const r = csvm.memory.Dom.get(a[i]);
+                    const r = csvm.memory.domStore.get(a[i]);
                     if (r && r.data) {
                         if (r.data.id) keys.push(String(r.data.id));
                         if (r.data.name) keys.push(String(r.data.name));
@@ -648,7 +648,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
             }
             for (let i = 0; i < n; i++) {
                 (function (el) {
-                    const rec = csvm.memory.Dom.get(el);
+                    const rec = csvm.memory.domStore.get(el);
                     if (!rec || !rec.data) return;
                     const name = rec.data.id || rec.data.name;
                     if (!name) return;
@@ -1857,7 +1857,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
             // 全部转为小写
             var localName = String(localName).toLowerCase();
             try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[CREATE] " + localName); } catch (e) {}
-            // 创建新node到csvm.memory.Dom
+            // 创建新node到csvm.memory.domStore
             const newNode = csvm.DomGenerator(localName, {}, null)
             return csvm.memory.config.elemLog === true ? __diagWrapElement(newNode) : newNode;
         }),
@@ -1967,7 +1967,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                 selectNodeContents: function (node) {
                     state.startContainer = node; state.startOffset = 0;
                     state.endContainer = node;
-                    var d = csvm.memory.Dom.get(node);
+                    var d = csvm.memory.domStore.get(node);
                     state.endOffset = d ? d.childNodes.length : 0;
                 },
                 collapse: function (toStart) { if (toStart !== false) { state.endContainer = state.startContainer; state.endOffset = state.startOffset; } else { state.startContainer = state.endContainer; state.startOffset = state.endOffset; } },
@@ -2083,7 +2083,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
                 }
                 return null;
             }
-            const domTree = csvm.memory.Dom;
+            const domTree = csvm.memory.domStore;
             const val = DfsFind(this, id);
             return __maybeWrapElement(val);
 
@@ -2099,7 +2099,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
             var self = this;
             return csvm.makeLiveHTMLCollection(function () {
                 var out = [];
-                var domTree = csvm.memory.Dom;
+                var domTree = csvm.memory.domStore;
                 (function walk(node) {
                     var d = domTree.get(node);
                     if (!d) return;
@@ -2127,7 +2127,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
         value: __autoFn("getElementsByName", 1, function (name) {
             var n = String(name == null ? "" : name);
             var out = [];
-            var domTree = csvm.memory.Dom;
+            var domTree = csvm.memory.domStore;
             var self = this;
             (function walk(node) {
                 var d = domTree.get(node);
@@ -2186,7 +2186,7 @@ Object.defineProperty(Document.prototype, Symbol.toStringTag, { value: "Document
             var target = String(tagName).toLowerCase();
             var self = this;
             var live = function () {
-                var domTree = csvm.memory.Dom;
+                var domTree = csvm.memory.domStore;
                 var out = [];
                 // 从 document 的后代开始遍历：doctype / html 这类直属子节点也会被匹配到
                 (function walk(node) {
@@ -2443,7 +2443,7 @@ function __implFn(name, length, impl) {
 function __newImplDoc() {
     var d = {};
     d.__proto__ = (typeof HTMLDocument !== "undefined") ? HTMLDocument.prototype : Document.prototype;
-    try { csvm.memory.Dom.set(d, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] }); } catch (e) {}
+    try { csvm.memory.domStore.set(d, { tag: "#document", nodeType: 9, data: {}, parent: null, childNodes: [] }); } catch (e) {}
     return csvm.proxy ? csvm.proxy(d, "document") : d;
 }
 function __newDocType(name, publicId, systemId) {

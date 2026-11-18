@@ -67,9 +67,9 @@ Object.defineProperty(DOMParser.prototype,Symbol.toStringTag,{value:"DOMParser",
             var doc = csvm.DomGenerator("#document", {}, null);
             try {
                 var nodes = csvm.htmlParse ? csvm.htmlParse(String(str == null ? "" : str)) : [];
-                var dd = csvm.memory.Dom.get(doc);
+                var dd = csvm.memory.domStore.get(doc);
                 for (var i = 0; i < nodes.length; i++) {
-                    var nd = csvm.memory.Dom.get(nodes[i]);
+                    var nd = csvm.memory.domStore.get(nodes[i]);
                     if (nd) nd.parent = doc;
                     dd.childNodes.push(nodes[i]);
                 }

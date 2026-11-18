@@ -1,7 +1,7 @@
 const fs=require("fs");
 const dom_code=require(`${__dirname}/DOM/Dom.node.js`);
 
-// 纯手写 DOM 后端：按固定顺序把各环境模块拼成一段代码，在沙箱里执行。
+// 纯手写 DOM 后端：按固定顺序把环境模块拼成一段代码，在沙箱里执行。
 function GetCode(){
     var code="";
     // 顺序不能乱：父接口必须先于子接口加载

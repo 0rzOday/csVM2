@@ -156,7 +156,7 @@ var EventTarget = function EventTarget() {
             const path = [this];
             let node = this;
             while (node) {
-                const d = csvm.memory.Dom ? csvm.memory.Dom.get(node) : null;
+                const d = csvm.memory.domStore ? csvm.memory.domStore.get(node) : null;
                 node = d && d.parent ? d.parent : null;
                 if (node) path.push(node);
             }
@@ -248,7 +248,7 @@ Object.defineProperty(EventTarget.prototype, Symbol.toStringTag, {
 });
 
 csvm.safefunction(EventTarget, "EventTarget");
-// 调试代理（csvm.memory.config.proxy 为 false 时原样返回）
+// 调试代理（csvm.memory.config.useProxy 为 false 时原样返回）
 EventTarget = csvm.proxy(EventTarget, "EventTarget");
 
 // ---------- Event / CustomEvent / UIEvent / ... ----------

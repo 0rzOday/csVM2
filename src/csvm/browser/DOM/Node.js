@@ -5,7 +5,7 @@ Object.defineProperty(Node.prototype,Symbol.toStringTag,{value:"Node",configurab
 
 // textContent 递归收集（只取文本节点；注释不算）
 function __textContentCollect(node, out) {
-    var d = csvm.memory.Dom.get(node);
+    var d = csvm.memory.domStore.get(node);
     if (!d) return;
     if (d.nodeType === 3) { out.push(d.data && d.data.text != null ? String(d.data.text) : ""); return; }
     if (d.nodeType === 1 || d.nodeType === 9 || d.nodeType === 11) {
@@ -13,7 +13,7 @@ function __textContentCollect(node, out) {
     }
 }
 function __textContentGet(node) {
-    var d = csvm.memory.Dom.get(node);
+    var d = csvm.memory.domStore.get(node);
     if (!d) return "";
     if (d.nodeType === 3 || d.nodeType === 8) return d.data && d.data.text != null ? String(d.data.text) : "";
     if (d.nodeType === 10) return null;
@@ -22,19 +22,19 @@ function __textContentGet(node) {
     return out.join("");
 }
 function __textContentSet(node, value) {
-    var d = csvm.memory.Dom.get(node);
+    var d = csvm.memory.domStore.get(node);
     if (!d) return;
     var text = value == null ? "" : String(value);
     if (d.nodeType === 3 || d.nodeType === 8) { d.data = d.data || {}; d.data.text = text; return; }
     // 元素/文档：清空子节点，插入一个文本节点
     for (var i = 0; i < d.childNodes.length; i++) {
-        var cd = csvm.memory.Dom.get(d.childNodes[i]);
+        var cd = csvm.memory.domStore.get(d.childNodes[i]);
         if (cd) cd.parent = null;
     }
     d.childNodes.length = 0;
     if (text !== "") {
         var tn = csvm.DomGenerator("#text", { text: text }, null);
-        var tnd = csvm.memory.Dom.get(tn);
+        var tnd = csvm.memory.domStore.get(tn);
         tnd.parent = node;
         d.childNodes.push(tn);
     }
@@ -99,7 +99,7 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get nodeType", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d ? d.nodeType : undefined;
         }),
         set: undefined,
@@ -109,7 +109,7 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get nodeName", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return undefined;
             if (d.nodeType === 1) {
                 var tag = d.tag || "";
@@ -143,7 +143,7 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get ownerDocument", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return null;
             if (d.nodeType === 9) return null;
             try { return (typeof document !== "undefined") ? document : null; } catch (e) { return null; }
@@ -156,7 +156,7 @@ function __textContentSet(node, value) {
         enumerable: true,
         get: __autoFn("get parentNode", 0,function(){
             // 已经手动实现✅
-            var thisNode=csvm.memory.Dom.get(this);
+            var thisNode=csvm.memory.domStore.get(this);
             return thisNode ? thisNode.parent : null;
         }),
         set: undefined,
@@ -166,9 +166,9 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get parentElement", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.parent) return null;
-            var pd = csvm.memory.Dom.get(d.parent);
+            var pd = csvm.memory.domStore.get(d.parent);
             return pd && pd.nodeType === 1 ? d.parent : null;
         }),
         set: undefined,
@@ -180,7 +180,7 @@ function __textContentSet(node, value) {
         get: __autoFn("get childNodes", 0, function () {
             var self = this;
             return csvm.makeLiveNodeList(function () {
-                var d = csvm.memory.Dom.get(self);
+                var d = csvm.memory.domStore.get(self);
                 return d ? d.childNodes : [];
             });
         }),
@@ -191,7 +191,7 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get firstChild", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.childNodes.length ? d.childNodes[0] : null;
         }),
         set: undefined,
@@ -201,7 +201,7 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get lastChild", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             return d && d.childNodes.length ? d.childNodes[d.childNodes.length - 1] : null;
         }),
         set: undefined,
@@ -211,9 +211,9 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get previousSibling", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.parent) return null;
-            var pd = csvm.memory.Dom.get(d.parent);
+            var pd = csvm.memory.domStore.get(d.parent);
             if (!pd) return null;
             var i = pd.childNodes.indexOf(this);
             return i > 0 ? pd.childNodes[i - 1] : null;
@@ -225,9 +225,9 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get nextSibling", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.parent) return null;
-            var pd = csvm.memory.Dom.get(d.parent);
+            var pd = csvm.memory.domStore.get(d.parent);
             if (!pd) return null;
             var i = pd.childNodes.indexOf(this);
             return i !== -1 && i + 1 < pd.childNodes.length ? pd.childNodes[i + 1] : null;
@@ -239,14 +239,14 @@ function __textContentSet(node, value) {
         configurable: true,
         enumerable: true,
         get: __autoFn("get nodeValue", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return null;
             if (d.nodeType === 3 || d.nodeType === 8) return d.data && d.data.text != null ? String(d.data.text) : "";
             if (d.nodeType === 2) return d.data && d.data.value != null ? String(d.data.value) : null;
             return null;
         }),
         set: __autoFn("set nodeValue", 1, function (v) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d) return;
             if (d.nodeType === 3 || d.nodeType === 8) { d.data = d.data || {}; d.data.text = v == null ? "" : String(v); }
         }),
@@ -390,13 +390,13 @@ function __textContentSet(node, value) {
         enumerable: true,
         writable: true,
         value: __autoFn("appendChild", 1, function (child) {
-            var self = csvm.memory.Dom.get(this);
-            var c = csvm.memory.Dom.get(child);
+            var self = csvm.memory.domStore.get(this);
+            var c = csvm.memory.domStore.get(child);
             if (!self || !c) return child;
             try { if (csvm.memory.config && csvm.memory.config.moLog) console.log("[APPC] <" + (self.tag || "?") + "> <- <" + (c.tag || "?") + "> attr=" + (c.data ? Object.keys(c.data).join(",") : "")); } catch (e) {}
             // 先从旧父节点摘下来
             if (c.parent) {
-                var pd = csvm.memory.Dom.get(c.parent);
+                var pd = csvm.memory.domStore.get(c.parent);
                 if (pd) {
                     var i = pd.childNodes.indexOf(child);
                     if (i !== -1) pd.childNodes.splice(i, 1);
@@ -411,17 +411,17 @@ function __textContentSet(node, value) {
     });
     // cloneNode
     function __cloneNodeImpl(node, deep) {
-        var d = csvm.memory.Dom.get(node);
+        var d = csvm.memory.domStore.get(node);
         if (!d) return null;
         var data = {};
         if (d.data) { for (var k in d.data) { try { data[k] = d.data[k]; } catch (e) {} } }
         var el = csvm.DomGenerator(d.tag, data, null);
-        var ed = csvm.memory.Dom.get(el);
+        var ed = csvm.memory.domStore.get(el);
         if (!ed) return el;
         if (deep && d.childNodes) {
             for (var i = 0; i < d.childNodes.length; i++) {
                 var c = __cloneNodeImpl(d.childNodes[i], true);
-                if (c) { var cd = csvm.memory.Dom.get(c); if (cd) cd.parent = el; ed.childNodes.push(c); }
+                if (c) { var cd = csvm.memory.domStore.get(c); if (cd) cd.parent = el; ed.childNodes.push(c); }
             }
         }
         return el;
@@ -464,7 +464,7 @@ function __textContentSet(node, value) {
         value: __autoFn("getRootNode", 0, function (opts) {
             var n = this;
             for (var i = 0; i < 10000; i++) {
-                var d = csvm.memory.Dom.get(n);
+                var d = csvm.memory.domStore.get(n);
                 if (!d) return n;
                 // shadow root 的 host 属性存在时，composed 模式继续向上
                 if (d.__mode && opts && opts.composed && d.host) { n = d.host; continue; }
@@ -487,8 +487,8 @@ function __textContentSet(node, value) {
         enumerable: true,
         writable: true,
         value: __autoFn("insertBefore", 2, function (child, ref) {
-            var self = csvm.memory.Dom.get(this);
-            var c = csvm.memory.Dom.get(child);
+            var self = csvm.memory.domStore.get(this);
+            var c = csvm.memory.domStore.get(child);
             if (!self || !c) return child;
             var idx;
             if (ref === null || ref === undefined) {
@@ -500,7 +500,7 @@ function __textContentSet(node, value) {
                 }
             }
             if (c.parent) {
-                var pd = csvm.memory.Dom.get(c.parent);
+                var pd = csvm.memory.domStore.get(c.parent);
                 if (pd) {
                     var i = pd.childNodes.indexOf(child);
                     if (i !== -1) {
@@ -533,7 +533,7 @@ function __textContentSet(node, value) {
             function eq(a, b) {
                 if (a === b) return true;
                 if (!a || !b) return false;
-                var da = csvm.memory.Dom.get(a), db = csvm.memory.Dom.get(b);
+                var da = csvm.memory.domStore.get(a), db = csvm.memory.domStore.get(b);
                 if (!da || !db) return false;
                 if (da.nodeType !== db.nodeType) return false;
                 if (String(da.tag) !== String(db.tag)) return false;
@@ -578,14 +578,14 @@ function __textContentSet(node, value) {
         enumerable: true,
         writable: true,
         value: __autoFn("normalize", 0, function () {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.childNodes) return;
             var out = [];
             for (var i = 0; i < d.childNodes.length; i++) {
                 var c = d.childNodes[i];
-                var cd = csvm.memory.Dom.get(c);
+                var cd = csvm.memory.domStore.get(c);
                 if (cd && cd.nodeType === 3) {
-                    var prev = out.length ? csvm.memory.Dom.get(out[out.length - 1]) : null;
+                    var prev = out.length ? csvm.memory.domStore.get(out[out.length - 1]) : null;
                     if (prev && prev.nodeType === 3) {
                         prev.data = prev.data || {};
                         prev.data.text = (prev.data.text != null ? prev.data.text : "") + (cd.data && cd.data.text != null ? cd.data.text : "");
@@ -598,7 +598,7 @@ function __textContentSet(node, value) {
             d.childNodes.length = 0;
             for (var j = 0; j < out.length; j++) d.childNodes.push(out[j]);
             for (var k = 0; k < d.childNodes.length; k++) {
-                try { var nd = csvm.memory.Dom.get(d.childNodes[k]); if (nd && nd.nodeType === 1) Node.prototype.normalize.call(d.childNodes[k]); } catch (e) {}
+                try { var nd = csvm.memory.domStore.get(d.childNodes[k]); if (nd && nd.nodeType === 1) Node.prototype.normalize.call(d.childNodes[k]); } catch (e) {}
             }
         }),
     });
@@ -609,7 +609,7 @@ function __textContentSet(node, value) {
         writable: true,
         value: __autoFn("removeChild", 1,function(child){
             // 已经手动实现✅
-            var thisNode=csvm.memory.Dom.get(this);
+            var thisNode=csvm.memory.domStore.get(this);
             // 先判断当前节点中要被删除的子节点存不存在
             var idx = thisNode.childNodes.indexOf(child);
             if (idx===-1){
@@ -619,7 +619,7 @@ function __textContentSet(node, value) {
             // 将childNodes移除
             thisNode.childNodes.splice(idx,1);
             try { if (csvm.moNotify) csvm.moNotify(this, { type: "childList", target: this, addedNodes: [], removedNodes: [child], previousSibling: null, nextSibling: null, attributeName: null }); } catch (e) {}
-            var childNode=csvm.memory.Dom.get(child);
+            var childNode=csvm.memory.domStore.get(child);
             if (childNode){
                 childNode.parent=null;
             }
@@ -632,14 +632,14 @@ function __textContentSet(node, value) {
         enumerable: true,
         writable: true,
         value: __autoFn("replaceChild", 2, function (newChild, oldChild) {
-            var d = csvm.memory.Dom.get(this);
+            var d = csvm.memory.domStore.get(this);
             if (!d || !d.childNodes) return oldChild;
             var idx = -1;
             for (var i = 0; i < d.childNodes.length; i++) { if (d.childNodes[i] === oldChild) { idx = i; break; } }
             if (idx === -1) return oldChild;
-            var od = csvm.memory.Dom.get(oldChild);
+            var od = csvm.memory.domStore.get(oldChild);
             if (od) od.parent = null;
-            var nd = csvm.memory.Dom.get(newChild);
+            var nd = csvm.memory.domStore.get(newChild);
             if (nd) nd.parent = this;
             d.childNodes[idx] = newChild;
             try { if (csvm.mirrorNamedForm) csvm.mirrorNamedForm(this); } catch (e) {}
@@ -670,7 +670,7 @@ var CharacterData = function CharacterData(){
 Object.defineProperty(CharacterData.prototype, Symbol.toStringTag, { value: "CharacterData", configurable: true });
 CharacterData.prototype.__proto__ = Node.prototype;
 (function () {
-    function dget(self) { return csvm.memory.Dom.get(self); }
+    function dget(self) { return csvm.memory.domStore.get(self); }
     function txt(self) { var d = dget(self); return d && d.data && d.data.text != null ? String(d.data.text) : ""; }
     Object.defineProperty(CharacterData.prototype, "data", {
         configurable: true, enumerable: true,
@@ -723,7 +723,7 @@ Text.prototype.__proto__ = CharacterData.prototype;
 Object.defineProperty(Text.prototype, "splitText", {
     configurable: true, enumerable: true, writable: true,
     value: csvm.safefunction(function (offset) {
-        var d = csvm.memory.Dom.get(this);
+        var d = csvm.memory.domStore.get(this);
         if (!d) return null;
         d.data = d.data || {};
         var s = d.data.text != null ? String(d.data.text) : "";
@@ -735,10 +735,10 @@ Object.defineProperty(Text.prototype, "splitText", {
         if (!node) return null;
         var parent = d.parent;
         if (parent) {
-            var pd = csvm.memory.Dom.get(parent);
+            var pd = csvm.memory.domStore.get(parent);
             if (pd) {
                 var idx = pd.childNodes.indexOf(this);
-                var nd = csvm.memory.Dom.get(node);
+                var nd = csvm.memory.domStore.get(node);
                 if (nd) nd.parent = parent;
                 if (idx === -1) pd.childNodes.push(node);
                 else pd.childNodes.splice(idx + 1, 0, node);
@@ -762,10 +762,10 @@ Object.defineProperty(DocumentFragment.prototype, Symbol.toStringTag, { value: "
 DocumentFragment.prototype.__proto__ = Node.prototype;
 (function () {
     function kids(self) {
-        var d = csvm.memory.Dom.get(self), out = [];
+        var d = csvm.memory.domStore.get(self), out = [];
         if (!d) return out;
         for (var i = 0; i < d.childNodes.length; i++) {
-            var cd = csvm.memory.Dom.get(d.childNodes[i]);
+            var cd = csvm.memory.domStore.get(d.childNodes[i]);
             if (cd && cd.nodeType === 1) out.push(d.childNodes[i]);
         }
         return out;

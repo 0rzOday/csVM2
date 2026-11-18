@@ -9,7 +9,7 @@ HTMLOptionElement=csvm.proxy(HTMLOptionElement,"HTMLOptionElement");
 // option 元素属性（value 默认取文本，selected 反射）
 // ---------------------------------------------------------------------------
 (function () {
-    function D(self) { var d = csvm.memory.Dom.get(self); if (!d) return null; if (!d.data) d.data = {}; return d; }
+    function D(self) { var d = csvm.memory.domStore.get(self); if (!d) return null; if (!d.data) d.data = {}; return d; }
     function has(self, k) { var d = D(self); return !!(d && Object.prototype.hasOwnProperty.call(d.data, k)); }
     function str(self, k, def) { var d = D(self); var v = d && d.data[k]; return v === undefined || v === null ? (def === undefined ? "" : def) : String(v); }
     function define(k, getter, setter, name) {
@@ -44,7 +44,7 @@ HTMLOptionElement=csvm.proxy(HTMLOptionElement,"HTMLOptionElement");
     });
     define("form", function () {
         var n = this;
-        for (var i = 0; i < 12 && n; i++) { var d = csvm.memory.Dom.get(n); if (d && d.tag === "form") return n; n = n.parentNode; }
+        for (var i = 0; i < 12 && n; i++) { var d = csvm.memory.domStore.get(n); if (d && d.tag === "form") return n; n = n.parentNode; }
         return null;
     });
 })();

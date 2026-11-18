@@ -52,7 +52,7 @@ Object.defineProperty(HTMLElement.prototype, "outerText", {
 // ---------------------------------------------------------------------------
 (function () {
     function D(self) {
-        var d = csvm.memory.Dom.get(self);
+        var d = csvm.memory.domStore.get(self);
         if (!d) return null;
         if (!d.data) d.data = {};
         return d;
@@ -169,7 +169,7 @@ var __getComputedStyleFn = {
             return map[s.toLowerCase()] !== undefined ? map[s.toLowerCase()] : s;
         }
         try {
-            var d = csvm.memory.Dom && csvm.memory.Dom.get(el);
+            var d = csvm.memory.domStore && csvm.memory.domStore.get(el);
             var txt = (d && d.data && d.data.style) || "";
             if (txt) {
                 String(txt).split(";").forEach(function (part) {
@@ -185,10 +185,10 @@ var __getComputedStyleFn = {
         // 可继承属性：自身没有时沿祖先内联样式回溯（目前只处理 color）
         try {
             if (!out.getPropertyValue || !out.getPropertyValue("color")) {
-                var nd = csvm.memory.Dom.get(el);
+                var nd = csvm.memory.domStore.get(el);
                 var p = nd && nd.parent;
                 while (p) {
-                    var pdata = csvm.memory.Dom.get(p);
+                    var pdata = csvm.memory.domStore.get(p);
                     var pstyle = pdata && pdata.data && pdata.data.style;
                     if (pstyle) {
                         var mm = /(?:^|;)\s*color\s*:\s*([^;]+)/i.exec(String(pstyle));
